@@ -23,5 +23,10 @@ export default {
         ...baseConfig.plugins,
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin(prodBuildOptions),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production'),
+            },
+        }),
     ],
-}
+};
