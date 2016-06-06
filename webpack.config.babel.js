@@ -5,11 +5,11 @@ export const baseConfig = {
     entry: {
         landing: [
             'babel-polyfill',
-            './src/landing.js'
+            './src/landing.js',
         ],
         setup: [
             'babel-polyfill',
-            './src/setup.js'
+            './src/setup.js',
         ],
         vendors: ['react'],
     },
@@ -24,11 +24,11 @@ export const baseConfig = {
             { test: require.resolve('react'), loader: 'expose?React' },
         ],
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin('vendors', 'vendor.js')
+            new webpack.optimize.CommonsChunkPlugin('vendors', 'vendor.js'),
         ],
     },
     plugins: [],
-}
+};
 
 const webpackClientUrl = 'webpack-dev-server/client?http://localhost:3000'; // port must match port where the dev server is running
 
@@ -41,4 +41,4 @@ export default {
         landing: [webpackClientUrl, ...baseConfig.entry.landing],
         setup: [webpackClientUrl, ...baseConfig.entry.setup],
     },
-}
+};
