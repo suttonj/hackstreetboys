@@ -15,17 +15,22 @@ export const baseConfig = {
     },
     output: {
         path: path.join(__dirname, 'build'),
-        publicPath: 'build',
         filename: '[name].js',
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+            { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
             { test: require.resolve('react'), loader: 'expose?React' },
         ],
         plugins: [
             new webpack.optimize.CommonsChunkPlugin('vendors', 'vendor.js'),
         ],
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx'],
+    },
+    devServer: {
+        historyApiFallback: true, // required to allow react-router -- webpack-dev-server will return 404s, but then the browser will fall back to the history API for routes
     },
     plugins: [],
 };
