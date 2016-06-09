@@ -21,6 +21,7 @@ export const baseConfig = {
         loaders: [
             { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
             { test: require.resolve('react'), loader: 'expose?React' },
+            { test: /\.svg$/, loader: 'file?name=[path][name].[ext]&context=./static' },
         ],
         plugins: [
             new webpack.optimize.CommonsChunkPlugin('vendors', 'vendor.js'),
@@ -35,7 +36,7 @@ export const baseConfig = {
     plugins: [],
 };
 
-const webpackClientUrl = 'webpack-dev-server/client?http://localhost:3000'; // port must match port where the dev server is running
+const webpackClientUrl = 'webpack-dev-server/client?https://localhost:3000'; // port must match port where the dev server is running
 
 // development config
 export default {

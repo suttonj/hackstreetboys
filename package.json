@@ -7,7 +7,7 @@
     "clean": "rimraf ./build && mkdir build",
     "prebuild": "npm run clean",
     "build": "webpack -p --config webpack.production.config.babel.js",
-    "start": "webpack-dev-server --inline --port 3000 --hot",
+    "start": "webpack-dev-server --inline --port 3000 --hot --https",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "eslint": "^2.11.1",
     "eslint-plugin-react": "^5.1.1",
     "expose-loader": "^0.7.1",
+    "file-loader": "^0.8.5",
     "jest-cli": "^12.1.1",
     "jm-js-translate": "^0.1.16",
     "react": "^15.1.0",
