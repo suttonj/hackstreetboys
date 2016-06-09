@@ -5,7 +5,7 @@ export const baseConfig = {
     entry: {
         landing: [
             'babel-polyfill',
-            './src/landing.js',
+            './src/landing/landing.js',
         ],
         setup: [
             'babel-polyfill',
