@@ -1,20 +1,20 @@
 {
-  "name": "google-for-work",
+  "name": "hackstreetboys",
   "version": "1.0.0",
-  "description": "join.me Google for Work App",
+  "description": "*NGAGE App",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf ./build && mkdir build",
     "prebuild": "npm run clean",
     "build": "webpack -p --config webpack.production.config.babel.js",
-    "start": "webpack-dev-server --inline --port 3000 --hot --https",
+    "start": "webpack-dev-server --inline --port 3000 --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@bitbucket.3amlabs.net:7999/exp/plugins---google-for-work.git"
+    "url": "https://github.com/suttonj/hackstreetboys/commits/master"
   },
-  "author": "LogMeIn",
+  "author": "Hackstreet Boys",
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
@@ -43,5 +43,8 @@
     "rimraf": "^2.5.2",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "babel-root-import": "^4.1.3"
   }
 }

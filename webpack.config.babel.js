@@ -3,13 +3,13 @@ import path from 'path';
 
 export const baseConfig = {
     entry: {
-        landing: [
+        client: [
             'babel-polyfill',
-            './src/landing/landing.js',
+            './src/client/client.js',
         ],
-        setup: [
+        host: [
             'babel-polyfill',
-            './src/setup.js',
+            './src/host/host.js',
         ],
         vendors: ['react'],
     },
@@ -31,12 +31,12 @@ export const baseConfig = {
         extensions: ['', '.js', '.jsx'],
     },
     devServer: {
-        historyApiFallback: true, // required to allow react-router -- webpack-dev-server will return 404s, but then the browser will fall back to the history API for routes
+        historyApiFallback: {}, // truthy value required to allow react-router: webpack-dev-server will return 404s, but then the browser will fall back to the history API for routes
     },
     plugins: [],
 };
 
-const webpackClientUrl = 'webpack-dev-server/client?https://localhost:3000'; // port must match port where the dev server is running
+const webpackClientUrl = 'webpack-dev-server/client?http://localhost:3000'; // port must match port where the dev server is running
 
 // development config
 export default {
@@ -44,7 +44,7 @@ export default {
     devtool: 'eval',
     entry: {
         ...baseConfig.entry,
-        landing: [webpackClientUrl, ...baseConfig.entry.landing],
-        setup: [webpackClientUrl, ...baseConfig.entry.setup],
+        client: [webpackClientUrl, ...baseConfig.entry.client],
+        host: [webpackClientUrl, ...baseConfig.entry.host],
     },
 };
