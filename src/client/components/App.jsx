@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from './Header';
+import Tabs from './Tabs';
 
 export default class App extends React.Component {
 
@@ -13,7 +13,7 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
-                <Header />
+                { window.location.pathname !== `/` && <Tabs /> }
                 {this.props.children}
             </div>
         );
