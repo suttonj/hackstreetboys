@@ -15,3 +15,9 @@ export const muiTheme = getMuiTheme({
         accent1Color: `darkgray`,
     },
 });
+
+export const slide = {
+    padding: 15,
+    minHeight: 100,
+    color: `black`,
+};

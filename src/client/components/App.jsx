@@ -6,18 +6,13 @@ import Tab from 'material-ui/Tabs/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import { muiTheme } from '~/shared/styles';
+import { muiTheme, slide } from '~/shared/styles';
 
 import Chat from './Chat';
 import Tools from './Tools';
 import Profile from './Profile';
 
 const styles = {
-    slide: {
-        padding: 15,
-        minHeight: 100,
-        color: `black`,
-    },
     slide1: {
         backgroundColor: `red`,
     },
@@ -45,10 +40,6 @@ const swap = dict => {
 
 class App extends Component {
 
-    handleChangeIndex = index => {
-        this.setState({ index });
-    }
-
     render() {
         const index = tabToIndex[this.props.tab.active];
         const setTab = tab => () => this.props.dispatch({ type: `SET_TAB`, tab });
@@ -69,13 +60,13 @@ class App extends Component {
                 <div>
                     {createTabs([`chat`, `tools`, `profile`])}
                     <SwipeableViews index={index} onChangeIndex={changeIndex}>
-                        <div style={{ ...styles.slide, ...styles.slide1 }}>
+                        <div style={{ ...slide, ...styles.slide1 }}>
                             <Chat />
                         </div>
-                        <div style={{ ...styles.slide, ...styles.slide2 }}>
+                        <div style={{ ...slide, ...styles.slide2 }}>
                             <Tools />
                         </div>
-                        <div style={{ ...styles.slide, ...styles.slide2 }}>
+                        <div style={{ ...slide, ...styles.slide3 }}>
                             <Profile />
                         </div>
                     </SwipeableViews>
