@@ -3,8 +3,8 @@
 ## dev
 * npm i
 * npm start
-* Content is server from localhost:3000/build/client.js
-* To view in browser, navigate to localhost:3000
+* Content is server from localhost:3000/build/{client,host}.js
+* To view in browser, navigate to localhost:3000/{client,host}.html
 
 ## prod
 * npm i
