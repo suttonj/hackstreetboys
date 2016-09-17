@@ -1,20 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class Chat extends React.Component {
+import { emit } from '~/client/actionCreators';
+
+class Chat extends React.Component {
+    constructor(props) {
+        super(props);
+        this.sendMessage = this.sendMessage.bind(this);
+    }
+
+    sendMessage = () => {
+        emit({ type: `CHAT_MESSAGE`, payload: this.refs.m.value });
+        this.refs.m.value = ``;
+    }
+
     render() {
         return (
             <div>
-                <ul id="messages"></ul>
-                <form action="">
-                    <input id="m" autoComplete="off" /><button>Send</button>
-                </form>
+                <ul>
+                    {this.props.messages.map((msg, i) => <li key={i}>{msg}</li>)}
+                </ul>
+                <input ref="m" autoComplete="off" />
+                <button onClick={this.sendMessage}>Send</button>
             </div>
         );
     }
 }
 
-const styles = {
-    messages: {
-        listStyletType: `none`,
-    }
-}
+export default connect(state => state.chat)(Chat);

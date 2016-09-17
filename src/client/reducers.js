@@ -15,3 +15,14 @@ export function tabs(state={ active: `chat` }, action) {
             return state;
     }
 }
+
+export function chat(state={ messages: [] }, action) {
+    switch (action.type) {
+        case `CHAT_MESSAGE`:
+            const messages = [...state.messages];
+            messages.push(action.payload);
+            return { ...state, messages };
+        default:
+            return state;
+    }
+}
