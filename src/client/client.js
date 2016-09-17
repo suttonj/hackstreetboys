@@ -2,16 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, browserHistory, useRouterHistory } from 'react-router';
-import { createBrowserHistory } from 'history';
 
 import * as reducers from './reducers';
 
 import App from './components/App';
-import Loading from './components/Loading';
-import Chat from './components/Chat';
-import Tools from './components/Tools';
-import Profile from './components/Profile';
 
 // const browserHistory = useRouterHistory(createBrowserHistory)({
 //     basename: `/client.html`,
@@ -27,14 +21,7 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         { /* Tell the Router to use our enhanced history */ }
-        <Router history={browserHistory}>
-            <Route path="/" component={App}>
-                <IndexRoute component={Loading} />
-                <Route path="chat" component={Chat} />
-                <Route path="tools" component={Tools} />
-                <Route path="profile" component={Profile} />
-            </Route>
-        </Router>
+        <App />
     </Provider>,
     document.getElementById('mount')
 );
