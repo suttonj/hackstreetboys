@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-export default class Loading extends Component {
+export default class Connecting extends Component {
 
     render() {
         return (
-            <h1>Loading...</h1>
+            <h1>Connecting...</h1>
         );
     }
 }

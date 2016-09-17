@@ -8,6 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { muiTheme, slide } from '~/shared/styles';
 
+import Connecting from './Connecting';
 import Chat from './Chat';
 import Tools from './Tools';
 import Profile from './Profile';
@@ -41,7 +42,16 @@ const swap = dict => {
 class App extends Component {
 
     render() {
-        const index = tabToIndex[this.props.tab.active];
+        const {
+            app,
+            tabs,
+        } = this.props;
+
+        if (app.isConnecting) {
+            return <Connecting />;
+        }
+
+        const index = tabToIndex[tabs.active];
         const setTab = tab => () => this.props.dispatch({ type: `SET_TAB`, tab });
         const createTabs = tabs => {
             return (

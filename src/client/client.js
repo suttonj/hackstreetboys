@@ -25,3 +25,6 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('mount')
 );
+
+// TODO: connecting logic, probably in actionCreator
+setTimeout(() => store.dispatch({ type: `CONNECT_TO_MEETING` }), 3000);

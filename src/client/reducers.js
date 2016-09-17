@@ -1,8 +1,13 @@
-export function app(state={}, action) {
-    return state;
+export function app(state={ isConnecting: true }, action) {
+    switch (action.type) {
+        case 'CONNECT_TO_MEETING':
+            return { ...state, isConnecting: false };
+        default:
+            return state;
+    }
 }
 
-export function tab(state={ active: `chat` }, action) {
+export function tabs(state={ active: `chat` }, action) {
     switch (action.type) {
         case `SET_TAB`:
             return { ...state, active: action.tab };
