@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Checkbox from 'material-ui/Checkbox';
+
+import Chat from './Chat';
+import Tools from './Tools';
+import Profile from './Profile';
 
 const styles = {
     slide: {
@@ -32,54 +38,54 @@ const muiTheme = getMuiTheme({
     },
 });
 
-export default class App extends Component {
+const tabToIndex = {
+    chat: 0,
+    tools: 1,
+    profile: 2,
+};
 
-    state = {
-        index: 0,
+const swap = dict => {
+    const ret = {};
+    for (var key in dict) {
+        ret[dict[key]] = key;
     }
+    return ret;
+};
 
-    constructor(props) {
-        super(props);
-        this.handleChangeTabs = this.handleChangeTabs.bind(this);
-        this.handleChangeIndex = this.handleChangeIndex.bind(this);
-    }
-
-    handleChangeTabs = value => {
-        this.setState({
-            index: value,
-        });
-    }
+class App extends Component {
 
     handleChangeIndex = index => {
         this.setState({ index });
     }
 
     render() {
-        const {
-            index,
-        } = this.state;
+        const index = tabToIndex[this.props.tab.active];
+        const setTab = tab => () => this.props.dispatch({ type: `SET_TAB`, tab });
+        const createTabs = tabs => {
+            return (
+                <Tabs value={index}>
+                { tabs.map(tab => 
+                    <Tab label={tab} value={tabToIndex[tab]} onClick={setTab(tab)} />
+                )}
+                </Tabs>
+            );
+        };
+        const indexToTab = swap(tabToIndex);
+        const changeIndex = i => setTab(indexToTab[i])();
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
-                    <Tabs value={index}>
-                        <Tab label="Chat" value={0} onClick={() => this.handleChangeTabs(0)} />
-                        <Tab label="Tools" value={1} onClick={() => this.handleChangeTabs(1)} />
-                        <Tab label="Profile" value={2} onClick={() => this.handleChangeTabs(2)} />
-                    </Tabs>
-                    <SwipeableViews index={index} onChangeIndex={this.handleChangeIndex}>
-                        <div style={{ ...styles.slide, ...styles.slide1 }}>
-                            Kyle: Said something
-                        </div>
-                        <div style={{ ...styles.slide, ...styles.slide2 }}>
-                            <Checkbox label="test event propogation" />
-                        </div>
-                        <div style={{ ...styles.slide, ...styles.slide3 }}>
-                            Name: Kyle Silberbauer
-                        </div>
+                    {createTabs([`chat`, `tools`, `profile`])}
+                    <SwipeableViews index={index} onChangeIndex={changeIndex}>
+                        <Chat />
+                        <Tools />
+                        <Profile />
                     </SwipeableViews>
                 </div>
             </MuiThemeProvider>
         );
     }
 }
+
+export default connect(state => state)(App);
