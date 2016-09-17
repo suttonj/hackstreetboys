@@ -5,8 +5,8 @@ import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import SwipeableViews from 'react-swipeable-views';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import Checkbox from 'material-ui/Checkbox';
+
+import { muiTheme } from '~/shared/styles';
 
 import Chat from './Chat';
 import Tools from './Tools';
@@ -19,24 +19,15 @@ const styles = {
         color: `black`,
     },
     slide1: {
-        backgroundColor: `white`,
+        backgroundColor: `red`,
     },
     slide2: {
-        backgroundColor: `white`,
+        backgroundColor: `yellow`,
     },
     slide3: {
-        backgroundColor: `white`,
+        backgroundColor: `blue`,
     },
 };
-
-const muiTheme = getMuiTheme({
-    palette: {
-        textColor: `black`,
-        alternateTextColor: `black`,
-        primary1Color: `white`,
-        accent1Color: `darkgray`,
-    },
-});
 
 const tabToIndex = {
     chat: 0,
@@ -78,9 +69,15 @@ class App extends Component {
                 <div>
                     {createTabs([`chat`, `tools`, `profile`])}
                     <SwipeableViews index={index} onChangeIndex={changeIndex}>
-                        <Chat />
-                        <Tools />
-                        <Profile />
+                        <div style={{ ...styles.slide, ...styles.slide1 }}>
+                            <Chat />
+                        </div>
+                        <div style={{ ...styles.slide, ...styles.slide2 }}>
+                            <Tools />
+                        </div>
+                        <div style={{ ...styles.slide, ...styles.slide2 }}>
+                            <Profile />
+                        </div>
                     </SwipeableViews>
                 </div>
             </MuiThemeProvider>
