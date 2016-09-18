@@ -9,9 +9,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { muiTheme, slide } from '~/shared/styles';
 
 import Connecting from './Connecting';
-import Chat from './Chat';
-import Tools from './Tools';
-import Profile from './Profile';
+import Chat from './chat/Chat';
+import Tools from './tools/Tools';
+import Profile from './profile/Profile';
 
 const styles = {
     slide1: {

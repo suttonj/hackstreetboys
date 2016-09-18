@@ -28,4 +28,4 @@ ReactDOM.render(
 );
 
 // TODO: connecting logic, probably in actionCreator
-setTimeout(() => store.dispatch({ type: `CONNECT_TO_MEETING` }), 3000);
+setTimeout(() => store.dispatch({ type: `CONNECT_TO_MEETING` }), 0);

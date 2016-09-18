@@ -27,7 +27,7 @@ export function chat(state={ messages: [] }, action) {
     }
 }
 
-import Bingo from './components/Bingo';
+import Bingo from './components/tools/Bingo';
 const toolComponents = {
     bingo: { component: Bingo, properties: {} },
 };
