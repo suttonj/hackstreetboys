@@ -22,7 +22,7 @@ export function chat(state={ messages: [] }, action) {
     switch (action.type) {
         case `CHAT_MESSAGE`:
             const messages = [...state.messages];
-            messages.push(action.payload);
+            messages.push(action.message);
             return { ...state, messages };
         default:
             return state;

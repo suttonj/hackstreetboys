@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 
 import * as reducers from './reducers';
 
+import Host from './components/Host';
+
 // Add the reducer to your store on the `routing` key
 const store = createStore(
     combineReducers(reducers),
@@ -14,7 +16,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>Host</div>
+        <Host />
     </Provider>,
     document.getElementById('mount')
 );

@@ -41,7 +41,7 @@ const swap = dict => {
     return ret;
 };
 
-class App extends Component {
+class Client extends Component {
 
     render() {
         const {
@@ -83,7 +83,7 @@ class App extends Component {
                         </div>
                     </SwipeableViews>
                     <Modal isOpen={app.isModalOpen}>
-                        MODAL!
+                        <button onClick={() => this.props.dispatch({ type: `TOGGLE_MODAL`, isModalOpen: false })}>Yes</button>
                     </Modal>
                 </div>
             </MuiThemeProvider>
@@ -91,4 +91,4 @@ class App extends Component {
     }
 }
 
-export default connect(state => state)(App);
+export default connect(state => state)(Client);

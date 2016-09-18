@@ -15,7 +15,7 @@ io.on(`connection`, socket => {
     db.emitted.forEach(data => socket.emit(`EMITTED`, data));
     socket.on(`disconnect`, () => console.log(`user disconnected`));
     socket.on(`EMIT`, data => {
-        console.log(`emitted: ${data.type} ${data.payload}`);
+        console.log(`emitted: ${data.type} ${data}`);
         db.emitted.push(data);
         // socket.broadcast.emit(`CHAT_MESSAGE`, data); // send to everyone except sender
         io.emit(`EMITTED`, data);

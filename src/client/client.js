@@ -7,7 +7,7 @@ import io from 'socket.io-client';
 
 import * as reducers from './reducers';
 
-import App from './components/App';
+import Client from './components/Client';
 
 const socket = io();
 
@@ -22,7 +22,7 @@ socket.on(`EMITTED`, data => store.dispatch(data));
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Client />
     </Provider>,
     document.getElementById('mount')
 );
