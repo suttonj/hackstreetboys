@@ -9,6 +9,7 @@ class Host extends Component {
         return (
             <div>
                 <button onClick={openClientModal}>Open Client Modal</button>
+                { this.props.app.results }
             </div>
         );
     }

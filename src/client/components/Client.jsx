@@ -10,6 +10,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { muiTheme, slide } from '~/shared/styles';
 
+import { respondToHost } from '../actionCreators';
+
 import Connecting from './Connecting';
 import Chat from './chat/Chat';
 import Tools from './tools/Tools';
@@ -83,7 +85,8 @@ class Client extends Component {
                         </div>
                     </SwipeableViews>
                     <Modal isOpen={app.isModalOpen}>
-                        <button onClick={() => this.props.dispatch({ type: `TOGGLE_MODAL`, isModalOpen: false })}>Yes</button>
+                        <button onClick={() => this.props.dispatch(respondToHost(`yes`))}>Yes</button>
+                        <button onClick={() => this.props.dispatch(respondToHost(`no`))}>No</button>
                     </Modal>
                 </div>
             </MuiThemeProvider>
