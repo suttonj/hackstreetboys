@@ -11,7 +11,7 @@ import { muiTheme, slide } from '~/shared/styles';
 import Connecting from './Connecting';
 import Chat from './Chat';
 import Tools from './Tools';
-import Profile from './Profile/Profile';
+import Profile from './Profile';
 
 const styles = {
     slide1: {
