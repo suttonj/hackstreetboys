@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Modal from 'react-modal';
+
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import SwipeableViews from 'react-swipeable-views';
@@ -53,10 +55,10 @@ class App extends Component {
 
         const index = tabToIndex[tabs.active];
         const setTab = tab => () => this.props.dispatch({ type: `SET_TAB`, tab });
-        const createTabs = tabs => {
+        const createTabs = tabsToCreate => {
             return (
                 <Tabs value={index}>
-                { tabs.map(tab => 
+                { tabsToCreate.map(tab => 
                     <Tab label={tab} value={tabToIndex[tab]} onClick={setTab(tab)} />
                 )}
                 </Tabs>
@@ -80,6 +82,9 @@ class App extends Component {
                             <Profile />
                         </div>
                     </SwipeableViews>
+                    <Modal isOpen={app.isModalOpen}>
+                        MODAL!
+                    </Modal>
                 </div>
             </MuiThemeProvider>
         );

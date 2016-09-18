@@ -1,7 +1,9 @@
-export function app(state={ isConnecting: true }, action) {
+export function app(state={ isConnecting: true, isModalOpen: false }, action) {
     switch (action.type) {
-        case 'CONNECT_TO_MEETING':
+        case `CONNECT_TO_MEETING`:
             return { ...state, isConnecting: false };
+        case `TOGGLE_MODAL`:
+            return { ...state, isModalOpen: action.isModalOpen };
         default:
             return state;
     }
