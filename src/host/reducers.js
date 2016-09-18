@@ -1,3 +1,8 @@
-export function app(state={}, action) {
-    return state;
+export function app(state={ results: [] }, action) {
+    switch (action.type) {
+        case `CLIENT_RESPONSE`:
+            return { ...state, results: [...state.results, action.response] };
+        default:
+            return state;
+    }
 }

@@ -10,7 +10,7 @@ class Chat extends React.Component {
     }
 
     sendMessage = () => {
-        emit({ type: `CHAT_MESSAGE`, payload: this.refs.m.value });
+        emit({ type: `CHAT_MESSAGE`, message: this.refs.m.value });
         this.refs.m.value = ``;
     }
 

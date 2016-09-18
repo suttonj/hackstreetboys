@@ -7,9 +7,7 @@ import io from 'socket.io-client';
 
 import * as reducers from './reducers';
 
-import App from './components/App';
-
-const socket = io();
+import Client from './components/Client';
 
 // Add the reducer to your store on the `routing` key
 const store = createStore(
@@ -18,14 +16,14 @@ const store = createStore(
     compose(applyMiddleware(thunk), window.devToolsExtension ? window.devToolsExtension() : f => f)
 );
 
-socket.on(`EMITTED`, data => store.dispatch(data));
+io().on(`EMITTED`, data => store.dispatch(data));
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Client />
     </Provider>,
     document.getElementById('mount')
 );
 
 // TODO: connecting logic, probably in actionCreator
-setTimeout(() => store.dispatch({ type: `CONNECT_TO_MEETING` }), 3000);
+setTimeout(() => store.dispatch({ type: `CONNECT_TO_MEETING` }), 0);
