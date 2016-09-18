@@ -26,3 +26,20 @@ export function chat(state={ messages: [] }, action) {
             return state;
     }
 }
+
+import Bingo from './components/Bingo';
+const toolComponents = {
+    bingo: { component: Bingo, properties: {} },
+};
+const toolDescriptors = [
+    { id: `bingo`, iconUrl: ``, title: `Bingo`, description: `A fun twist on classic BINGO!` },
+];
+
+export function tools(state={ activeTool: null, tools: toolDescriptors }, action) {
+    switch (action.type) {
+        case `SET_TOOL`:
+            return { ...state, activeTool: toolComponents[action.tool] };
+        default:
+            return state;
+    }
+}
