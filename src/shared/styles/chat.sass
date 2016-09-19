@@ -26,11 +26,13 @@
     position: relative
     display: flex
 .plus-btn
+    cursor: pointer
     border: solid 2px gray
     padding: 0 5px
     border-radius: 5px 0 0 5px
 .popover
-    top: -60px
+    cursor: pointer
+    top: -62px
     left: 10px
     position: absolute
     background-color: white
@@ -38,6 +40,8 @@
     border-radius: 5px 5px 5px 0
     padding: 10px
     font-size: smaller
+.popover > div:hover
+    color: orange
 .bubble-triangle
     height: 25px
     width: 25px

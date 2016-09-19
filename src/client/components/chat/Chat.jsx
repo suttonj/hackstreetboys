@@ -27,7 +27,7 @@ class Chat extends React.Component {
 
         const plusIcon = <div className="plus-btn" onClick={() => this.setState({ isPlusMenuOpen: !this.state.isPlusMenuOpen })}>+</div>;
 
-        const plusMenu = <div className="popover">
+        const plusMenu = <div className="popover" onClick={() => this.setState({ isPlusMenuOpen: false })}>
             <div onClick={() => emit({ type: `RAISE_HAND` })}>Raise Hand</div>
             <div>Direct Message</div>
             <div className="bubble-triangle" />
