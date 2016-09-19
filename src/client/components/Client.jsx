@@ -27,14 +27,6 @@ const tabToIndex = {
     profile: 2,
 };
 
-const styles= {
-  slide: {
-    padding: 0,
-    minHeight: 100,
-    height: "100%",
-  },
-}
-
 const swap = dict => {
     const ret = {};
     for (var key in dict) {
@@ -72,8 +64,8 @@ class Client extends Component {
         const createTabs = tabsToCreate => {
             return (
                 <Tabs value={index}>
-                { tabsToCreate.map(tab => 
-                    <Tab label={tab} value={tabToIndex[tab]} onClick={setTab(tab)} />
+                { tabsToCreate.map((tab, i) => 
+                    <Tab key={i} label={tab} value={tabToIndex[tab]} onClick={setTab(tab)} />
                 )}
                 </Tabs>
             );
