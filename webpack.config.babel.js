@@ -22,6 +22,7 @@ export const baseConfig = {
             { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
             { test: require.resolve('react'), loader: 'expose?React' },
             { test: /\.svg$/, loader: 'file?name=[path][name].[ext]&context=./static' },
+            { test: /\.sass$/, loaders: ["style", "css", "sass"] },
         ],
         plugins: [
             new webpack.optimize.CommonsChunkPlugin('vendors', 'vendor.js'),
