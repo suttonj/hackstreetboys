@@ -3,8 +3,6 @@ import {ALPHABET} from '~/shared/constants/audio';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Modal from 'react-modal';
-
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import SwipeableViews from 'react-swipeable-views';
@@ -20,20 +18,13 @@ import Connecting from './Connecting';
 import Chat from './chat/Chat';
 import Tools from './tools/Tools';
 import Profile from './profile/Profile';
+import Poll from './tools/Poll';
 
 const tabToIndex = {
     chat: 0,
     tools: 1,
     profile: 2,
 };
-
-const styles= {
-  slide: {
-    padding: 0,
-    minHeight: 100,
-    height: "100%",
-  },
-}
 
 const swap = dict => {
     const ret = {};
@@ -73,8 +64,8 @@ class Client extends Component {
         const createTabs = tabsToCreate => {
             return (
                 <Tabs value={index}>
-                { tabsToCreate.map(tab => 
-                    <Tab label={tab} value={tabToIndex[tab]} onClick={setTab(tab)} />
+                { tabsToCreate.map((tab, i) => 
+                    <Tab key={i} label={tab} value={tabToIndex[tab]} onClick={setTab(tab)} />
                 )}
                 </Tabs>
             );
@@ -102,10 +93,7 @@ class Client extends Component {
                                 />
                         </div>
                     </SwipeableViews>
-                    <Modal isOpen={app.isModalOpen}>
-                        <button onClick={() => this.props.dispatch(respondToHost(`yes`))}>Yes</button>
-                        <button onClick={() => this.props.dispatch(respondToHost(`no`))}>No</button>
-                    </Modal>
+                    <Poll activePoll={app.activePoll}/>
                 </div>
             </MuiThemeProvider>
         );

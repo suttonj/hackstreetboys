@@ -14,7 +14,7 @@ class Tools extends React.Component {
             <div>
             { ToolComponent ?
                 <ToolComponent {...properties} /> :
-                this.props.tools.map(tool => <Tool {...tool} setTool={setTool(tool.id)} />)
+                this.props.tools.map((tool, i) => <Tool {...tool} key={i} setTool={setTool(tool.id)} />)
             }
             </div>
         );
