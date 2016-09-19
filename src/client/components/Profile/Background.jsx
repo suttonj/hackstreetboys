@@ -1,13 +1,12 @@
-import React, {Component, PropTypes} from 'react';
-
-const PersonalBackgroundImage = 'https://secure.join.me/Common/Images/Background/Socks.jpg';
+import React, {Component} from 'react';
+import ImageDisplay from './ImageDisplay';
 
 export default class Background extends Component {
 
     render() {
         return (
             <div style={styles.container}>
-                <div style={{ ...styles.preview, backgroundImage: `url("${PersonalBackgroundImage}")`}}></div>
+                <ImageDisplay styles={styles.preview} image={this.props.backgroundImage} />
             </div>
         );
     }

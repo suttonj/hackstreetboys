@@ -29,6 +29,24 @@ export function chat(state={ messages: [] }, action) {
     }
 }
 
+const profileInitialState = {
+    background: 'https://secure.join.me/Common/Images/Background/Socks.jpg',
+    avatar: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/238777/joinmoji-11',
+    firstName: null,
+    lastName: null,
+};
+
+export function profile(state=profileInitialState, action) {
+    switch (action.type) {
+         case `UPDATE_AVATAR`:
+            return { ...state, avatar: action.avatar };
+        case `UPDATE_NAME`:
+            return { ...state,  firstName: action.firstName, lastName: action.lastName };
+        default:
+            return state;
+    }
+}
+
 import Bingo from './components/tools/Bingo';
 const toolComponents = {
     bingo: { component: Bingo, properties: {} },

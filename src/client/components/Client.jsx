@@ -49,6 +49,7 @@ class Client extends Component {
         const {
             app,
             tabs,
+            profile,
         } = this.props;
 
         if (app.isConnecting) {
@@ -81,7 +82,7 @@ class Client extends Component {
                             <Tools />
                         </div>
                         <div style={{ ...slide, ...styles.slide3 }}>
-                            <Profile />
+                            <Profile data={profile} />
                         </div>
                     </SwipeableViews>
                     <Modal isOpen={app.isModalOpen}>
