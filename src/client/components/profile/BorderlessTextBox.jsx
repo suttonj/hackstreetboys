@@ -31,7 +31,7 @@ class BorderlessTextBox extends Component {
         let textDefaultValue = this.props.initialValue ? this.props.initialValue : '';
         let inputSize = (this.state.text.length || this.props.placeholder.length) + 1;
 
-        return (<input type="text" style={styles.textBox}
+        return (<input type="text" className="borderless-textbox"
                     placeholder={this.props.placeholder}
                     defaultValue={textDefaultValue}
                     onChange={this.handleOnChange}
@@ -69,23 +69,6 @@ class BorderlessTextBox extends Component {
 
     }
 }
-
-const styles = {
-    textBox: {
-        display: 'inline-block',
-        outline: 'none',
-        border: 'none',
-        backgroundColor: 'rgba(0,0,0,0)',
-        color: '#888',
-        font: 'inherit',
-        fontWeight: 'bold',
-        fontSize: '32px',
-        textAlign: 'center',
-        maxWidth: '100%',
-        margin: 'auto',
-        display: 'block',
-    }
-};
 
 BorderlessTextBox.propTypes = {
     placeholder: PropTypes.string.isRequired,

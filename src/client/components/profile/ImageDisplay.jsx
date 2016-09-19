@@ -6,7 +6,7 @@ class ImageDisplay extends Component {
         const imageDataUrl = this.props.image || '';
 
         return (
-            <div style={{ ...this.props.styles, backgroundImage: `url("${imageDataUrl}")` }} />
+            <div className={this.props.className} style={{backgroundImage: `url("${imageDataUrl}")` }} />
         );
     }
 }

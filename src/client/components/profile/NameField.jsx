@@ -4,7 +4,7 @@ import BorderlessTextBox from './BorderlessTextBox';
 export default class NameField extends Component {
     render() {
         return (
-            <div style={styles.nameField}>
+            <div className="name">
                 <BorderlessTextBox 
                     type="name" 
                     placeholder="Enter your name"
@@ -15,13 +15,6 @@ export default class NameField extends Component {
     }
 }
 
-const styles = {
-    nameField: {
-        position: 'absolute',
-        bottom: '160px',
-        width: '100%',
-    }
-};
 
 NameField.propTypes = {
     name: PropTypes.string,
