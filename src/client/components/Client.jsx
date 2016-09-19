@@ -10,7 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { muiTheme, slide } from '~/shared/styles';
 
-import { respondToHost } from '../actionCreators';
+import { respondToHost, setAvatar } from '../actionCreators';
 
 import Connecting from './Connecting';
 import Chat from './chat/Chat';
@@ -82,7 +82,7 @@ class Client extends Component {
                             <Tools />
                         </div>
                         <div style={{ ...slide, ...styles.slide3 }}>
-                            <Profile data={profile} />
+                            <Profile data={profile} setAvatar={(imageUrl) => this.props.dispatch(setAvatar(imageUrl))}/>
                         </div>
                     </SwipeableViews>
                     <Modal isOpen={app.isModalOpen}>

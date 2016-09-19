@@ -70,5 +70,4 @@ const styles = {
 
 ImageUpload.propTypes = {
     uploadEvent: PropTypes.func.isRequired,
-    type: PropTypes.string,
 };

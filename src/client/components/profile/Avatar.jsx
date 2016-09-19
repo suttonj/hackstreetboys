@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 import ImageDisplay from './ImageDisplay';
 import ImageUpload from './ImageUpload';
 
-class ProfilePhotoUploader extends Component {
+export default class Avatar extends Component {
 
     render() {
         return (
@@ -45,9 +45,7 @@ const styles = {
     }
 }
 
-ProfilePhotoUploader.propTypes = {
+Avatar.propTypes = {
     avatarUploadEvent: PropTypes.func.isRequired,
     profileImage: PropTypes.string.isRequired,
 };
-
-export default ProfilePhotoUploader;
