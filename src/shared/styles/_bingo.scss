@@ -1,0 +1,37 @@
+.board {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border-radius: 10px;      
+  box-shadow: 0 0 0 1px gray;
+    
+}
+.tile {
+  text-align: center;
+  background: white;
+  box-shadow: 0 0 0px .5px gray inset ;
+  flex-basis: 20%;
+  position: relative;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  &.tile-selected{
+    background: orange;
+    color: white;
+  }
+  span{
+    flex-grow: 1;
+    margin: 5px;
+  }
+}
+
+.tile:before {
+  content: '';
+  margin-bottom: 100%;
+  width: 1%;
+  height: 100%;
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+}
