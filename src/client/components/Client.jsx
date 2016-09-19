@@ -3,8 +3,6 @@ import {ALPHABET} from '~/shared/constants/audio';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Modal from 'react-modal';
-
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import SwipeableViews from 'react-swipeable-views';
@@ -20,6 +18,7 @@ import Connecting from './Connecting';
 import Chat from './chat/Chat';
 import Tools from './tools/Tools';
 import Profile from './profile/Profile';
+import Poll from './tools/Poll';
 
 const tabToIndex = {
     chat: 0,
@@ -88,10 +87,7 @@ class Client extends Component {
                             <Profile />
                         </div>
                     </SwipeableViews>
-                    <Modal isOpen={app.isModalOpen}>
-                        <button onClick={() => this.props.dispatch(respondToHost(`yes`))}>Yes</button>
-                        <button onClick={() => this.props.dispatch(respondToHost(`no`))}>No</button>
-                    </Modal>
+                    <Poll activePoll={app.activePoll}/>
                 </div>
             </MuiThemeProvider>
         );

@@ -5,5 +5,5 @@ export const emit = data => socket.emit(`EMIT`, data);
 
 export const respondToHost = response => {
     emit({ type: `CLIENT_RESPONSE`, response });
-    return { type: `TOGGLE_MODAL`, isModalOpen: false };
+    return { type: `SET_POLL`, activePoll: null };
 };
