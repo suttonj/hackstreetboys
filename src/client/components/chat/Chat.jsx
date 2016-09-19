@@ -27,9 +27,11 @@ class Chat extends React.Component {
 
         const plusIcon = <div className="plus-btn" onClick={() => this.setState({ isPlusMenuOpen: !this.state.isPlusMenuOpen })}>+</div>;
 
-        const plusMenu = <div>
-            <button onClick={() => emit({ type: `RAISE_HAND` })}>Raise Hand</button>
-            <button>Direct Message</button>
+        const plusMenu = <div className="popover">
+            <div onClick={() => emit({ type: `RAISE_HAND` })}>Raise Hand</div>
+            <div>Direct Message</div>
+            <div className="bubble-triangle" />
+            <div className="bubble-triangle-border" />
         </div>;
 
         const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } placeholder="Type to chat..." className="chat-input" />;
