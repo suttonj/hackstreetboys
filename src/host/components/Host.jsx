@@ -5,10 +5,11 @@ import { emit } from '../actionCreators';
 
 class Host extends Component {
     render() {
-        const openClientModal = () => emit({ type: `TOGGLE_MODAL`, isModalOpen: true });
+        const askQuestion = () => emit({ type: `SET_POLL`, activePoll: this.refs.question.value });
         return (
             <div>
-                <button onClick={openClientModal}>Open Client Modal</button>
+                <input ref="question"/>
+                <button onClick={askQuestion}>Ask question</button>
                 { this.props.app.results }
             </div>
         );
