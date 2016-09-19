@@ -23,12 +23,65 @@
     align-self: flex-end
 
 .chat-input-container
+    position: relative
     display: flex
-    
 .plus-btn
+    cursor: pointer
     border: solid 2px gray
     padding: 0 5px
     border-radius: 5px 0 0 5px
+.popover
+    cursor: pointer
+    top: -62px
+    left: 10px
+    position: absolute
+    background-color: white
+    border: 2px solid gray
+    border-radius: 5px 5px 5px 0
+    padding: 10px
+    font-size: smaller
+.popover > div:hover
+    color: orange
+.bubble-triangle
+    height: 25px
+    width: 25px
+    top: 50px
+    left: -2px
+    position: absolute
+    overflow: hidden
+.bubble-triangle:after
+    height: 100%
+    width: 100%
+    position: relative
+    -webkit-transform: rotate(45deg)
+    -moz-transform: rotate(45deg)
+    transform: rotate(45deg)
+    content: ''
+    display: block
+    left: -75%
+    top: -50%
+    background-color: gray
+    background-size: cover
+.bubble-triangle-border
+    top: 45px
+    left: 0
+    height: 25px
+    width: 25px
+    position: absolute
+    overflow: hidden
+.bubble-triangle-border:after
+    height: 100%
+    width: 100%
+    position: relative
+    -webkit-transform: rotate(45deg)
+    -moz-transform: rotate(45deg)
+    transform: rotate(45deg)
+    content: ''
+    display: block
+    left: -75%
+    top: -50%
+    background-color: white
+    background-size: cover
 .chat-input
     width: 80%
     border: solid 2px gray
