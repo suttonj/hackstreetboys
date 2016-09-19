@@ -31,16 +31,14 @@ class Chat extends React.Component {
         const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } placeholder="Type to chat..." />;
 
         return (
-            <div>
-                <ul className="chat-messages">
-                    {this.props.messages.map((msg, i) => <div key={i} className={`message ${msg.messageType} ${msg.role}`}>{msg.text}</div>)}
-                </ul>
-                <div className="chat-input">
-                  { plusIcon }
-                  { this.state.isPlusMenuOpen && plusMenu }
-                  { textInput }
+            <div className={`chat-container`}>
+            {this.props.messages.map((msg, i) =>
+                <div key={i} className={`message ${msg.messageType} ${msg.role}`}>{msg.text}</div>
+            )}
+                { plusIcon }
+                { this.state.isPlusMenuOpen && plusMenu }
+                { textInput }
                 <button onClick={this.sendChatMessage}>Send</button>
-                </div>
             </div>
         );
     }

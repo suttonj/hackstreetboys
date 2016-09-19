@@ -86,7 +86,7 @@ class Client extends Component {
                 <div className='app-container' onClick={this.connectToMeeting}>
                     {createTabs([`chat`, `tools`, `profile`])}
                     <SwipeableViews index={index} onChangeIndex={changeIndex} className='swipeable-view'>
-                        <div className='chat-container'>
+                        <div>
                             <Chat />
                         </div>
                         <div>
