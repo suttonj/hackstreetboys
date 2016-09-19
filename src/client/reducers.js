@@ -29,9 +29,11 @@ export function chat(state={ messages: [] }, action) {
     }
 }
 
-export function profile(state={name: '', email: ''}, action) {
+const name = window.localStorage.getItem(`name`) || ``;
+export function profile(state={name, email: ''}, action) {
     switch (action.type) {
         case `UPDATE_PROFILE`:
+            window.localStorage.setItem('name', action.name);
             return { ...state, name: action.name, email: action.email };
         default:
             return state;

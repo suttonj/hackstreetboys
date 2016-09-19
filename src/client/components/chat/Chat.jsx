@@ -15,7 +15,11 @@ class Chat extends React.Component {
     }
 
     sendChatMessage = () => {
-        emit({ type: `CHAT_MESSAGE`, name: this.props.profile.name || `You`, text: `${this.refs.m.value}`, role: `viewer`, messageType: `message` });
+        const text = this.refs.m.value;
+        if (!text) {
+            return;
+        }
+        emit({ type: `CHAT_MESSAGE`, name: this.props.profile.name || `You`, text, role: `viewer`, messageType: `message` });
         this.refs.m.value = ``;
     }
 
