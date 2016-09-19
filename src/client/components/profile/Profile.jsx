@@ -10,6 +10,7 @@ export default class Profile extends React.Component {
                 <Background backgroundImage={this.props.data.background} />
                 <Avatar profileImage={this.props.data.avatar} avatarUploadEvent={this.props.setAvatar} />
                 <NameField name={this.props.data.name} textChanged={this.props.setName} />
+                <button className="btn btn-full btn-primary">Join</button>
             </div>
         );
     }
