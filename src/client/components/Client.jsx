@@ -12,7 +12,6 @@ import '~/shared/styles/theme.sass';
 import '~/shared/styles/tabs.sass';
 import muiTheme from '~/shared/styles/muiTheme.js';
 
-import { respondToHost } from '../actionCreators';
 
 import Connecting from './Connecting';
 import Chat from './chat/Chat';

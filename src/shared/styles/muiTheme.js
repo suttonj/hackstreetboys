@@ -7,6 +7,7 @@ const muiTheme = getMuiTheme({
         primary1Color: `white`,
         accent1Color: `darkgray`,
     },
+    fontFamily: 'Rubik'
 });
 
 export default muiTheme;
