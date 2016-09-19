@@ -18,6 +18,6 @@ export const muiTheme = getMuiTheme({
 
 export const slide = {
     padding: 15,
-    minHeight: 100,
+    minHeight: 600,
     color: `black`,
 };

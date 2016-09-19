@@ -10,7 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { muiTheme, slide } from '~/shared/styles';
 
-import { respondToHost, setAvatar } from '../actionCreators';
+import { respondToHost, setAvatar, setName } from '../actionCreators';
 
 import Connecting from './Connecting';
 import Chat from './chat/Chat';
@@ -25,7 +25,7 @@ const styles = {
         backgroundColor: `yellow`,
     },
     slide3: {
-        backgroundColor: `blue`,
+        
     },
 };
 
@@ -82,7 +82,11 @@ class Client extends Component {
                             <Tools />
                         </div>
                         <div style={{ ...slide, ...styles.slide3 }}>
-                            <Profile data={profile} setAvatar={(imageUrl) => this.props.dispatch(setAvatar(imageUrl))}/>
+                            <Profile 
+                                data={profile} 
+                                setAvatar={(imageUrl) => this.props.dispatch(setAvatar(imageUrl))}
+                                setName={(name) => this.props.dispatch(setName(name))}
+                                />
                         </div>
                     </SwipeableViews>
                     <Modal isOpen={app.isModalOpen}>

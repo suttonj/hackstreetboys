@@ -50,7 +50,7 @@ const styles = {
         margin: '0',
         cursor: 'pointer',
         textAlign: 'center',
-        borderRadius: '7px;',
+        borderRadius: '7px',
         border: '1px solid rgba(0,0,0,0)',
         userSelect: 'none',
         color: '#fff',
