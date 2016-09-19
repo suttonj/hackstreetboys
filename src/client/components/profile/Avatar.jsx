@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import ImageDisplay from './ImageDisplay';
-import ImageUploadButton from './ImageUploadButton';
+import ImageUpload from './ImageUpload';
 
 class ProfilePhotoUploader extends Component {
 
@@ -13,7 +13,7 @@ class ProfilePhotoUploader extends Component {
                     image={this.props.profileImage}
                     ref="uploader"/>
                     <div style={styles.photoButton}>
-                    <ImageUploadButton
+                    <ImageUpload
                         uploadEvent={this.props.avatarUploadEvent} />
                     </div>
             </div>

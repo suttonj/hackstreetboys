@@ -1,13 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 //import Upload from 'rc-upload';
 
-class ImageUploadButton extends Component {
+export default class ImageUpload extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
-        let  clicked = (evt) {
+        let  clicked = (evt) => {
             this.refs.uploader.click();
         };
 
@@ -68,9 +68,7 @@ const styles = {
     },
 }
 
-ImageUploadButton.propTypes = {
+ImageUpload.propTypes = {
     uploadEvent: PropTypes.func.isRequired,
     type: PropTypes.string,
 };
-
-export default ImageUpload;
