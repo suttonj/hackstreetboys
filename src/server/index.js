@@ -3,7 +3,7 @@ import http from 'http';
 import socketIo from 'socket.io';
 
 const chatLog = [
-    { messageType: `welcome`, text: `Welcome to join.me/join.kyle` },
+    { messageType: `meetingState`, text: `Welcome to join.me/join.kyle` },
     { messageType: `status`, text: `Kyle Silberbauer started a meeting.` },
     { messageType: `status`, text: `Ryan Bigelow joined.` },
     { messageType: `status`, text: `William Humphreys-Cloutier joined.` },

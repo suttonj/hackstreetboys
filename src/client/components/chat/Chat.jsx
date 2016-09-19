@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { emit } from '~/client/actionCreators';
 
+import '~/shared/styles/chat.sass';
+
 class Chat extends React.Component {
     
     state = { isPlusMenuOpen: false }
@@ -13,7 +15,7 @@ class Chat extends React.Component {
     }
 
     sendChatMessage = () => {
-        emit({ type: `CHAT_MESSAGE`, text: `You ${this.refs.m.value}`, messageType: `viewer` });
+        emit({ type: `CHAT_MESSAGE`, text: `You ${this.refs.m.value}`, role: `viewer`, messageType: `message` });
         this.refs.m.value = ``;
     }
 
@@ -26,12 +28,12 @@ class Chat extends React.Component {
             <button>Direct Message</button>
         </div>;
 
-        const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } />;
+        const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } placeholder="Type to chat..." />;
 
         return (
             <div>
                 <ul>
-                    {this.props.messages.map((msg, i) => <li key={i}>{msg.text}</li>)}
+                    {this.props.messages.map((msg, i) => <div key={i} className={`message ${msg.messageType} ${msg.role}`}>{msg.text}</div>)}
                 </ul>
                 { plusIcon }
                 { this.state.isPlusMenuOpen && plusMenu }
