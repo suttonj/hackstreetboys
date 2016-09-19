@@ -51,7 +51,7 @@ class Chat extends React.Component {
                         { this.state.isPlusMenuOpen && plusMenu }
                         { textInput }
                     </div>
-                    <button className="send-btn" onClick={this.sendChatMessage}>➦</button>
+                    <button className="send-btn" onClick={this.sendChatMessage}>⇨</button>
                 </div>
             </div>
         );

@@ -1,0 +1,67 @@
+
+.loading-string{
+  display: block;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  
+  .bar-text{
+    display: inline-block;
+    letter-spacing: 5px;
+    font-size: 30px;
+    font-weight: 600;
+    background: white;
+    position: relative;
+    top: -30px;
+    width: auto;
+  }
+  
+  .bars {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    
+    .bar {
+      display: inline-block;
+      background: #666;
+      height: 3px;
+      width: 10%;      
+      animation: sound 0ms -800ms linear infinite alternate;
+    }
+  }
+
+  
+  @keyframes sound {
+    0% {
+      opacity: .35;
+      height: 3px; 
+    }
+    100% {
+      opacity: 1;       
+      height: 28px;        
+    }
+  }
+  
+  .bar:nth-child(1)  { animation-duration: 474ms; }
+  .bar:nth-child(2)  { animation-duration: 433ms; }
+  .bar:nth-child(3)  { animation-duration: 407ms; }
+  .bar:nth-child(4)  { animation-duration: 458ms; }
+  .bar:nth-child(5)  { animation-duration: 400ms; }
+  .bar:nth-child(6)  { animation-duration: 427ms; }
+  .bar:nth-child(7)  { animation-duration: 441ms; }
+  .bar:nth-child(8)  { animation-duration: 419ms; }
+  .bar:nth-child(9)  { animation-duration: 487ms; }
+  .bar:nth-child(10) { animation-duration: 442ms; }
+  .bar:nth-child(11)  { animation-duration: 474ms; }
+  .bar:nth-child(12)  { animation-duration: 433ms; }
+  .bar:nth-child(13)  { animation-duration: 407ms; }
+  .bar:nth-child(14)  { animation-duration: 458ms; }
+  .bar:nth-child(15)  { animation-duration: 400ms; }
+  .bar:nth-child(16)  { animation-duration: 427ms; }
+  .bar:nth-child(17)  { animation-duration: 441ms; }
+  .bar:nth-child(18)  { animation-duration: 419ms; }
+  .bar:nth-child(19)  { animation-duration: 487ms; }
+  .bar:nth-child(20) { animation-duration: 442ms; }
+}
