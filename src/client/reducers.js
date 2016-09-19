@@ -32,16 +32,15 @@ export function chat(state={ messages: [] }, action) {
 const profileInitialState = {
     background: 'https://secure.join.me/Common/Images/Background/Socks.jpg',
     avatar: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/238777/joinmoji-11',
-    firstName: null,
-    lastName: null,
+    name: null,
 };
 
 export function profile(state=profileInitialState, action) {
     switch (action.type) {
-         case `UPDATE_AVATAR`:
+         case `SET_AVATAR`:
             return { ...state, avatar: action.avatar };
-        case `UPDATE_NAME`:
-            return { ...state,  firstName: action.firstName, lastName: action.lastName };
+        case `SET_NAME`:
+            return { ...state,  name: action.name };
         default:
             return state;
     }
