@@ -32,7 +32,7 @@ export function chat(state={ messages: [] }, action) {
 export function profile(state={name: '', email: ''}, action) {
     switch (action.type) {
         case `UPDATE_PROFILE`:
-            return { ...state, name: action.name, email: action.email}
+            return { ...state, name: action.name, email: action.email };
         default:
             return state;
     }
