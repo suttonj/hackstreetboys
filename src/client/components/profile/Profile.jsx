@@ -5,7 +5,7 @@ export default class Profile extends React.Component {
     render() {
         return (
             <div>
-                <Background />
+                <Background backgroundImage={this.props.data.background} />
             </div>
         );
     }
