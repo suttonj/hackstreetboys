@@ -1,3 +1,5 @@
+const SonicServer = require('~/shared/libs/sonic-server');
+import {ALPHABET} from '~/shared/constants/audio';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -42,6 +44,18 @@ const swap = dict => {
 };
 
 class Client extends Component {
+    constructor(props) {
+        super(props);
+        this.sserver = new SonicServer({alphabet: ALPHABET});
+        this.connectToMeeting = this.connectToMeeting.bind(this);
+        this.sserver.on('message', this.connectToMeeting);
+        this.sserver.start();
+    }
+
+    connectToMeeting(message) {
+        this.sserver.stop();
+        this.props.dispatch({ type: `CONNECT_TO_MEETING` });
+    }
 
     render() {
         const {
@@ -50,7 +64,7 @@ class Client extends Component {
         } = this.props;
 
         if (app.isConnecting) {
-            return <Connecting />;
+            return <Connecting onClick={this.connectToMeeting}/>;
         }
 
         const index = tabToIndex[tabs.active];
@@ -69,7 +83,7 @@ class Client extends Component {
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
-                <div className='app-container' >
+                <div className='app-container' onClick={this.connectToMeeting}>
                     {createTabs([`chat`, `tools`, `profile`])}
                     <SwipeableViews index={index} onChangeIndex={changeIndex} className='swipeable-view'>
                         <div className='chat-container'>
