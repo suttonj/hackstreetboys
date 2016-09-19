@@ -4,25 +4,39 @@ import { connect } from 'react-redux';
 import { emit } from '~/client/actionCreators';
 
 class Chat extends React.Component {
+    
+    state = { isPlusMenuOpen: false }
+
     constructor(props) {
         super(props);
         this.sendChatMessage = this.sendChatMessage.bind(this);
     }
 
     sendChatMessage = () => {
-        emit({ type: `CHAT_MESSAGE`, message: `You ${this.refs.m.value}` });
+        emit({ type: `CHAT_MESSAGE`, text: `You ${this.refs.m.value}`, messageType: `viewer` });
         this.refs.m.value = ``;
     }
 
     render() {
+
+        const plusIcon = <div onClick={() => this.setState({ isPlusMenuOpen: !this.state.isPlusMenuOpen })}>+</div>;
+
+        const plusMenu = <div>
+            <button onClick={() => emit({ type: `RAISE_HAND` })}>Raise Hand</button>
+            <button>Direct Message</button>
+        </div>;
+
+        const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } />;
+
         return (
             <div>
                 <ul>
-                    {this.props.messages.map((msg, i) => <li key={i}>{msg}</li>)}
+                    {this.props.messages.map((msg, i) => <li key={i}>{msg.text}</li>)}
                 </ul>
-                <input ref="m" autoComplete="off" />
+                { plusIcon }
+                { this.state.isPlusMenuOpen && plusMenu }
+                { textInput }
                 <button onClick={this.sendChatMessage}>Send</button>
-                <button onClick={() => emit({ type: `RAISE_HAND` })}>Raise Hand</button>
             </div>
         );
     }
