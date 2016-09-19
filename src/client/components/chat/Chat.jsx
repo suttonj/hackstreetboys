@@ -32,13 +32,15 @@ class Chat extends React.Component {
 
         return (
             <div>
-                <ul>
+                <ul className="chat-messages">
                     {this.props.messages.map((msg, i) => <div key={i} className={`message ${msg.messageType} ${msg.role}`}>{msg.text}</div>)}
                 </ul>
-                { plusIcon }
-                { this.state.isPlusMenuOpen && plusMenu }
-                { textInput }
+                <div className="chat-input">
+                  { plusIcon }
+                  { this.state.isPlusMenuOpen && plusMenu }
+                  { textInput }
                 <button onClick={this.sendChatMessage}>Send</button>
+                </div>
             </div>
         );
     }
