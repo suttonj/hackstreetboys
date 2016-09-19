@@ -15,33 +15,37 @@ class Chat extends React.Component {
     }
 
     sendChatMessage = () => {
-        emit({ type: `CHAT_MESSAGE`, text: `You ${this.refs.m.value}`, role: `viewer`, messageType: `message` });
+        emit({ type: `CHAT_MESSAGE`, name: this.props.profile.name || `You`, text: `${this.refs.m.value}`, role: `viewer`, messageType: `message` });
         this.refs.m.value = ``;
     }
 
     render() {
 
-        const plusIcon = <div onClick={() => this.setState({ isPlusMenuOpen: !this.state.isPlusMenuOpen })}>+</div>;
+        const plusIcon = <div className="plus-btn" onClick={() => this.setState({ isPlusMenuOpen: !this.state.isPlusMenuOpen })}>+</div>;
 
         const plusMenu = <div>
             <button onClick={() => emit({ type: `RAISE_HAND` })}>Raise Hand</button>
             <button>Direct Message</button>
         </div>;
 
-        const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } placeholder="Type to chat..." />;
+        const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } placeholder="Type to chat..." className="chat-input" />;
 
         return (
             <div className={`chat-container`}>
-            {this.props.messages.map((msg, i) =>
-                <div key={i} className={`message ${msg.messageType} ${msg.role}`}>{msg.text}</div>
+            {this.props.chat.messages.map((msg, i) =>
+                <div key={i} className={`message ${msg.messageType} ${msg.role}`}>
+                { msg.messageType === `message` ? `${msg.name}: ${msg.text}` : msg.text}
+                </div>
             )}
-                { plusIcon }
-                { this.state.isPlusMenuOpen && plusMenu }
-                { textInput }
-                <button onClick={this.sendChatMessage}>Send</button>
+                <div className="chat-input-container">
+                    { plusIcon }
+                    { this.state.isPlusMenuOpen && plusMenu }
+                    { textInput }
+                    <button className="send-btn" onClick={this.sendChatMessage}>➦</button>
+                </div>
             </div>
         );
     }
 }
 
-export default connect(state => state.chat)(Chat);
+export default connect(state => state)(Chat);

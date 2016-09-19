@@ -6,11 +6,36 @@
     display: table
 .meetingState
     font-weight: bold
+    margin-bottom: 15px
 .status
     color: gray
+    font-style: italic
+.presenter, .participant, .viewer
+    color: white
+    padding: 5px
+    margin: 5px 0
+    border-radius: 5px
 .presenter
     background-color: $jm-orange
 .participant, .viewer
     background-color: $jm-green
 .viewer
     align-self: flex-end
+
+.chat-input-container
+    display: flex
+    
+.plus-btn
+    border: solid 2px gray
+    padding: 0 5px
+    border-radius: 5px 0 0 5px
+.chat-input
+    width: 80%
+    border: solid 2px gray
+    border-left: 0
+    padding-left: 10px
+    border-radius: 0 5px 5px 0
+.send-btn
+    background-color: $jm-green
+    border: solid 1px gray
+    border-radius: 5px
