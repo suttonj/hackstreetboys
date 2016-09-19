@@ -2,6 +2,10 @@
 
 .chat-container
     display: flex
+    justify-content: space-between
+.chat-message-container
+    display: flex
+    flex-direction: column
 .message
     display: table
 .meetingState
@@ -23,8 +27,14 @@
     align-self: flex-end
 
 .chat-input-container
+    display: flex
+    justify-content: space-between
+    height: 25px
     position: relative
     display: flex
+.plus-input
+    display: flex
+    flex-grow: 10
 .plus-btn
     cursor: pointer
     border: solid 2px gray
