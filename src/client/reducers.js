@@ -56,7 +56,14 @@ const toolComponents = {
     bingo: { component: Bingo, properties: {} },
 };
 const toolDescriptors = [
-    { id: `bingo`, iconUrl: ``, title: `Bingo`, description: `A fun twist on classic BINGO!` },
+    { id: `bingo`, iconUrl: `https://logo.clearbit.com/logmein.com`, title: `LogMeIn All-Staff Bingo`, description: `A fun twist on classic BINGO!`, real:true },
+    { id: `trello`, iconUrl: `https://logo.clearbit.com/trello.com`, title: `Trello`, description: `Share tasks instantly`},
+    { id: `slack`, iconUrl: `https://logo.clearbit.com/slack.com`, title: `Slack`, description: `View status and invite teammates`},
+    { id: `JIRA`, iconUrl: `https://logo.clearbit.com/jira.atlassian.com`, title: `JIRA`, description: `Integrated planning poker`},
+    { id: `drop-paper`, iconUrl: `https://logo.clearbit.com/dropbox.com`, title: `Dropbox Paper`, description: `Collaborative Meeting Notes`},
+    { id: `invision`, iconUrl: `https://logo.clearbit.com/invisionapp.com`, title: `InVision`, description: `Share designs with commenting`},
+    { id: `googlemaps`, iconUrl: `https://logo.clearbit.com/maps.google.com`, title: `Google Maps`, description: `Share ETAs and location`},
+    { id: `mashery`, iconUrl: `https://logo.clearbit.com/mashery.com`, title: `Mashery`, description: `Add APIs via API`},
 ];
 
 export function tools(state={ activeTool: null, tools: toolDescriptors }, action) {
