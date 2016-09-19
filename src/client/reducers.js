@@ -29,9 +29,20 @@ export function chat(state={ messages: [] }, action) {
     }
 }
 
-const name = window.localStorage.getItem(`name`) || ``;
-export function profile(state={name, email: ''}, action) {
+const profileInitialState = {
+    background: 'https://secure.join.me/Common/Images/Background/Socks.jpg',
+    avatar: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/238777/joinmoji-11.png',
+    name: window.localStorage.getItem(`name`) || ``,
+    email: null,
+};
+
+export function profile(state=profileInitialState, action) {
     switch (action.type) {
+        case `SET_AVATAR`:
+            return { ...state, avatar: action.avatar };
+        case `SET_NAME`:
+            window.localStorage.setItem('name', action.name);
+            return { ...state,  name: action.name };
         case `UPDATE_PROFILE`:
             window.localStorage.setItem('name', action.name);
             return { ...state, name: action.name, email: action.email };

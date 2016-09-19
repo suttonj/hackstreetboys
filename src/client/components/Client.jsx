@@ -12,7 +12,7 @@ import '~/shared/styles/theme.sass';
 import '~/shared/styles/tabs.sass';
 import muiTheme from '~/shared/styles/muiTheme.js';
 
-import { respondToHost } from '../actionCreators';
+import { respondToHost, setAvatar, setName } from '../actionCreators';
 
 import Connecting from './Connecting';
 import Chat from './chat/Chat';
@@ -52,6 +52,7 @@ class Client extends Component {
         const {
             app,
             tabs,
+            profile,
         } = this.props;
 
         if (app.isConnecting) {
@@ -83,8 +84,13 @@ class Client extends Component {
                         <div>
                             <Tools />
                         </div>
+
                         <div>
-                            <Profile />
+                            <Profile 
+                                data={profile} 
+                                setAvatar={(imageUrl) => this.props.dispatch(setAvatar(imageUrl))}
+                                setName={(name) => this.props.dispatch(setName(name))}
+                                />
                         </div>
                     </SwipeableViews>
                     <Poll activePoll={app.activePoll}/>

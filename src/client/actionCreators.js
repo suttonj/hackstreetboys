@@ -7,3 +7,11 @@ export const respondToHost = response => {
     emit({ type: `CLIENT_RESPONSE`, response });
     return { type: `SET_POLL`, activePoll: null };
 };
+
+export const setAvatar = imageUrl => {
+	return { type: `SET_AVATAR`, avatar: imageUrl };
+};
+
+export const setName = name => {
+	return { type: `SET_NAME`, name: name };
+}
