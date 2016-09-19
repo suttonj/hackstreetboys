@@ -38,11 +38,13 @@ class Chat extends React.Component {
 
         return (
             <div className={`chat-container`}>
-            {this.props.chat.messages.map((msg, i) =>
-                <div key={i} className={`message ${msg.messageType} ${msg.role}`}>
-                { msg.messageType === `message` ? `${msg.name}: ${msg.text}` : msg.text}
+                <div className={`chat-message-container`}>
+                {this.props.chat.messages.map((msg, i) =>
+                    <div key={i} className={`message ${msg.messageType} ${msg.role}`}>
+                    { msg.messageType === `message` ? `${msg.name}: ${msg.text}` : msg.text}
+                    </div>
+                )}
                 </div>
-            )}
                 <div className="chat-input-container">
                     { plusIcon }
                     { this.state.isPlusMenuOpen && plusMenu }
