@@ -1,0 +1,25 @@
+body{
+  margin: 0;
+  padding: 5px;
+  height: calc(100vh - 10px);
+  
+  #mount, .app-container, .swipeable-view {
+    height: 100%;
+  }  
+}
+
+.chat-container{
+  display:flex;
+  flex-flow: column nowrap;
+  background: white;
+  padding: 10px;
+  
+  .chat-messages{
+    flex-grow: 1;
+  }
+  
+  .chat-input{
+    flex-basis: content;
+  }
+  
+}

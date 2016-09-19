@@ -22,7 +22,7 @@ export function chat(state={ messages: [] }, action) {
     switch (action.type) {
         case `CHAT_MESSAGE`:
             const messages = [...state.messages];
-            messages.push(action.message);
+            messages.push(action);
             return { ...state, messages };
         default:
             return state;
@@ -33,14 +33,17 @@ const profileInitialState = {
     background: 'https://secure.join.me/Common/Images/Background/Socks.jpg',
     avatar: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/238777/joinmoji-11.png',
     name: null,
+    email: null,
 };
 
 export function profile(state=profileInitialState, action) {
     switch (action.type) {
-         case `SET_AVATAR`:
+        case `SET_AVATAR`:
             return { ...state, avatar: action.avatar };
         case `SET_NAME`:
             return { ...state,  name: action.name };
+        case `UPDATE_PROFILE`:
+            return { ...state, name: action.name, email: action.email };
         default:
             return state;
     }
