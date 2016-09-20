@@ -90,15 +90,14 @@ class Client extends Component {
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div className='app-container' onClick={this.connectToMeeting}>
                     {createTabs([`chat`, `tools`, `profile`])}
-                    <SwipeableViews index={index} onChangeIndex={changeIndex} className='swipeable-view'>
-                        <div>
+                    <SwipeableViews index={index} onChangeIndex={changeIndex}>
+                        <div className='swipeable-view'>
                             <Chat />
                         </div>
-                        <div>
+                        <div className='swipeable-view'>
                             <Tools />
                         </div>
-
-                        <div>
+                        <div className='swipeable-view'>
                             <Profile 
                                 data={profile} 
                                 setAvatar={(imageUrl) => this.props.dispatch(setAvatar(imageUrl))}
