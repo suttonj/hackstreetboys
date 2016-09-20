@@ -30,13 +30,18 @@ class Chat extends React.Component {
         emit({ type: `RAISE_HAND`, name: this.props.profile.name || 'Someone' });
     }
 
+    componentDidUpdate = () => {
+        var element = this.refs.messageContainer;
+        element.scrollTop = element.scrollHeight;
+    }
+
     render() {
 
         const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } placeholder="Type to chat..." className="chat-input" />;
 
         return (
             <div className={`chat-container`}>
-                <div className={`chat-message-container`}>
+                <div ref='messageContainer' className={`chat-message-container`}>
                     {this.props.chat.messages.map((msg, i) =>
                         <div key={i} className={`message ${msg.messageType} ${msg.role}`}>
                         { msg.messageType === `message` ? `${msg.name}: ${msg.text}` : msg.text}
