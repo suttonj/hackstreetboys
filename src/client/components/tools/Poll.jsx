@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 
+import { connect } from 'react-redux';
 import { respondToHost } from '~/client/actionCreators';
 
 import '~/shared/styles/poll.sass';
@@ -19,7 +20,7 @@ const MODAL_STYLES = {
   },
 };
 
-export default class Poll extends Component {
+class Poll extends Component {
   constructor(props){
     super(props);
   }
@@ -38,3 +39,5 @@ export default class Poll extends Component {
       );
   }
 }
+
+export default connect(state => state)(Poll);
