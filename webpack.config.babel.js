@@ -11,6 +11,10 @@ export const baseConfig = {
             'babel-polyfill',
             './src/host/host.js',
         ],
+        hostQuestion: [
+            'babel-polyfill',
+            './src/host/hostQuestion.js',
+        ],
         vendors: ['react'],
     },
     output: {

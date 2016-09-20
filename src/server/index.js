@@ -25,6 +25,7 @@ const db = { emitted: chatLog };
 
 app.get(`/client`, (req, res) => res.sendFile(`${__dirname}/client.html`));
 app.get(`/host`, (req, res) => res.sendFile(`${__dirname}/host.html`));
+app.get(`/host-question`, (req, res) => res.sendFile(`${__dirname}/hostQuestion.html`));
 
 io.on(`connection`, socket => {
     console.log(`a user connected`);

@@ -12,7 +12,7 @@ export default class Connecting extends Component {
             </div>
             <div className="listen-status">
               <h2 onClick={this.props.onClick}>Listening For a Meeting...</h2>
-              <Bars loadingString="123412523" />
+              <Bars loadingString={this.props.code} />
             </div>
           </div>
         );
