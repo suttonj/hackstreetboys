@@ -19,15 +19,15 @@ class Host extends Component {
     }
 
     componentWillReceiveProps(nextProps, oldProps) {
-        const raisedHand = nextProps.app.hasRaisedHand;
+        const raisedHands = nextProps.app.hasRaisedHand;
 
-        if (raisedHand) {
+        if (raisedHands && raisedHands.length > this.props.app.hasRaisedHand.length) {
             this.notificationSystem.addNotification({
                 level: 'info',
                 autoDismiss: 0,
                 children: (
                     <div style={{alignSelf: 'center', padding: '20px 0 5px 0', textAlign: 'center'}}>
-                        <b>{`${raisedHand}`}</b> raised their hand. ✋
+                        <b>{`${raisedHands[raisedHands.length-1]}`}</b> raised their hand. ✋
                     </div>
                 )
             });
@@ -39,7 +39,9 @@ class Host extends Component {
             <div>
                 <NotificationSystem ref="toasts" style={toastStyle} />
                 { this.props.app.activePoll &&
-                    <PollResults pollResults={this.props.app.pollResults} />
+                    <PollResults 
+                        pollResults={this.props.app.pollResults}
+                        dismiss={() => this.props.dispatch({type: 'CLEAR_POLL'})} />
                 }
             </div>
         );

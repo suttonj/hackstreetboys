@@ -1,5 +1,5 @@
 const defaultState = {
-    hasRaisedHand: null,
+    hasRaisedHand: [],
     pollResults: {
         yes: 0,
         no: 0,
@@ -10,7 +10,7 @@ const defaultState = {
 export function app(state=defaultState, action) {
     switch (action.type) {
         case `RAISE_HAND`:
-            return { ...state, hasRaisedHand: action.name };
+            return { ...state, hasRaisedHand: [ ...state.hasRaisedHand, action.name ] };
         case `CLIENT_RESPONSE`:
             return { ...state, 
                 pollResults: {...state.pollResults, 
@@ -20,7 +20,7 @@ export function app(state=defaultState, action) {
         case `SET_POLL`:
             return { ...state, activePoll: action.activePoll };
         case `CLEAR_POLL`:
-            return { ...state, activePoll: null };
+            return { ...state, activePoll: null, pollResults: { yes: 0, no: 0 } };
         default:
             return state;
     }
