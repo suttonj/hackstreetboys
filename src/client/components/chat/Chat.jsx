@@ -12,6 +12,7 @@ class Chat extends React.Component {
     constructor(props) {
         super(props);
         this.sendChatMessage = this.sendChatMessage.bind(this);
+        this.raiseHand = this.raiseHand.bind(this);
     }
 
     sendChatMessage = () => {
@@ -21,6 +22,11 @@ class Chat extends React.Component {
         }
         emit({ type: `CHAT_MESSAGE`, name: this.props.profile.name || `You`, text, role: `viewer`, messageType: `message` });
         this.refs.m.value = ``;
+    }
+
+    raiseHand() {
+        emit({ type: `CHAT_MESSAGE`, text: `You raised your hand`, messageType: `status` });
+        emit({ type: `RAISE_HAND`, name: this.props.profile.name || 'Someone' });
     }
 
     render() {
@@ -38,7 +44,7 @@ class Chat extends React.Component {
                 </div>
                 <div className="chat-input-container">
                     <div className="plus-input">
-                        <div className="plus-btn" onClick={() => emit({ type: `RAISE_HAND`, name: this.props.profile.name || 'Someone' })}>✋</div>
+                        <div className="plus-btn" onClick={this.raiseHand}>✋</div>
                         { textInput }
                     </div>
                     <button className="send-btn" onClick={this.sendChatMessage}>⇨</button>
