@@ -41,8 +41,10 @@ class Bingo extends Component {
     render() {
         return (
           <div style={{padding:`0 10px`}}>
-            <div style={{float:`left`}} onClick={() => this.props.dispatch({ type:`SET_TOOL`, tool: null })}>⇦</div>
-            <h1 style={{textAlign:`center`, marginTop:25}}>Meeting Bingo</h1>
+            <h1 style={{textAlign:`center`, marginTop:25}}>
+              <a style={{float:`left`}} onClick={() => this.props.dispatch({ type:`SET_TOOL`, tool: null })}>⇦</a>
+              Meeting Bingo
+            </h1>
             <p style={{textAlign:`center`}}>Fill out the card below as the presenter uses the following phrases. Once you get 4 in a row, you can yell bingo to win!</p>
             <Tiles list={tiles} />
             

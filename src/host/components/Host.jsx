@@ -19,10 +19,6 @@ class Host extends Component {
     componentWillReceiveProps(nextProps, oldProps) {
         const raisedHand = nextProps.app.hasRaisedHand;
         if (raisedHand) {
-            if (this.props.app.hasRaisedHand && raisedHand === this.props.app.hasRaisedHand) {
-                return;
-            }
-
             this.notificationSystem.addNotification({
                 level: 'info',
                 autoDismiss: 0,
