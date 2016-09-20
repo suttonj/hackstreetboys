@@ -8,6 +8,12 @@ body{
   }  
 }
 
+.disabled{
+  opacity: 0.6;
+}
+
+// Chat Page
+
 .chat-container{
   display:flex;
   flex-flow: column nowrap;
@@ -18,10 +24,28 @@ body{
     flex-grow: 1;
   }
   
-  .chat-input{
-    flex-basis: content;
+  .chat-input-container{
+    font-size: 2rem;
+    height: 3rem;
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    .chat-input{
+      width: 85%;
+      font-size: 1rem;
+    }
+    .plus-btn{
+      width: 2rem;
+      text-align: center;
+    }
+  }
+  .send-btn{
+    flex-grow:1;
+    font-size: 1rem;
   }
 }
+
+// Tools Page
 
 .tool-row{
   padding: $padding-base;
@@ -30,9 +54,30 @@ body{
   .tool-image{
     width: 50px;
     height: 50px;
-    background-color: $gray-light;
     border-radius: 3px;
-    margin: $padding-base 12px $padding-base $padding-base
+    margin: $padding-base 12px $padding-base $padding-base;
+    > img{
+      width: 100%;
+      height: auto;
+    }
   }
-  
+  .tool-status{
+    flex-grow: 1;
+    text-align: right;
+    align-self: center;
+    font-size: 0.8rem;
+    opacity: 0.7
+  }
+}
+
+// Loading Spinner
+
+.listen-spinner{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h2{
+    z-index: 10;
+  }
 }

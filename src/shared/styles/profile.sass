@@ -1,0 +1,111 @@
+@import 'variables'
+
+.profile-photo-container
+    display: flex
+    flex-direction: row
+    justify-content: center
+    transform: translateY(-50%)
+
+.profile-photo-circle
+	display: flex
+	align-self: center
+	width: 200px
+	height: 200px
+	border-radius: 50%
+	overflow: hidden
+	background-size: cover
+	background-position: center
+	background-color: $white
+	border: solid 2px $white
+
+.profile-photo-buttons
+	position: relative
+	padding: 5px 0
+	top: 100px
+	width: 100%
+	text-align: center
+
+.profile-background-container
+    align-self: center
+    justify-content: center
+    width: 100%
+    height: 271px
+    overflow: hidden
+    transition: height 1s cubic-bezier(0.19, 1, 0.22, 1)
+    background-color: $mid-grey
+
+.profile-background-preview
+    height: 100%
+    width: 100%
+    background-color: $offwhite
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+
+.profile-background-overlay
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-image: linear-gradient($black70, $transparent)
+
+.profile-background-button
+    position: absolute
+    top: calc(50% - 20px)
+    left: 50%
+    transform: translateY(-50%) translateX(-50%)
+
+@mixin text-box-style($fontSize: $font-size, $fontWeight: normal, $textAlign: left)
+    font:
+        size: $fontSize
+        weight: $fontWeight
+    text-align: $textAlign
+
+.name
+    align-items: center
+    transform: translateY(-25%)
+    font-size: $font-size-huge
+    font-weight: bold
+    text-align: center
+
+.borderless-textbox
+    outline: none
+    border: none
+    background-color: $transparent
+    font: inherit
+    max-width: 100%
+    text-align: center
+
+.image-uploader-button
+    position: relative
+    overflow: hidden
+    height: 50px
+    width: 175px
+    line-height: 50px
+    font-size: 14px
+    display: inline-block
+    padding: 0 10px
+    margin: 0
+    cursor: pointer
+    text-align: center
+    border-radius: 7px
+    border: 1px solid $transparent
+    user-select: none
+    input
+        display: none
+
+
+.image-uploader-icon
+    background-size: initial
+    vertical-align: sub
+    display: inline-block
+    width: 20px
+    height: 20px
+    border-radius: 5px
+    margin-right: 4px
+
+    &.grey
+        background-position: 0 0
+    &.white
+        background-position: 20px -20px

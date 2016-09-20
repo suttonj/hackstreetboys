@@ -1,0 +1,64 @@
+#scenes {
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  position: absolute;
+  transform: scale(1);
+  transform-origin: 0 0;
+}
+.scene {
+  width: 100%;
+  height: 100%;
+}
+
+.scene {
+  position: relative;
+  overflow: hidden;
+}
+
+.scene .description {
+  display: none;
+}
+
+.scene1 {
+  background-color: transparent;
+}
+
+.scene1 .dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.2em;
+  height: 0.2em;
+  background-color: #97f4ff;
+  box-shadow: 0 0 .2em .13em $jm-green, 0 0 0 0 white, 0 0 0 0 $jm-green;
+  opacity: 0;
+  animation: dot-anim linear reverse 1.5s infinite;
+  border-radius: 50%;
+}
+
+@keyframes dot-anim {
+  0% {
+    opacity: .5;
+  }
+  20% {
+    opacity: .4;
+    box-shadow: 0 0 .2em .13em $jm-green, 0 0 0 0 white, 0 0 5px 10px $jm-green;
+  }
+  50% {
+    opacity: .3;
+    box-shadow: 0 0 .2em .13em $jm-green, 0 0 0 150px white, 0 0 0 173px $jm-green;
+  }
+  60% {
+    opacity: .2;
+    box-shadow: 0 0 .2em .13em $jm-green, 0 0 0 245px white, 0 0 0 255px $jm-green;
+  }
+  90% {
+    opacity: .1;
+    box-shadow: 0 0 .2em .13em $jm-green, 0 0 0 317px white, 0 0 0 320px $jm-green;
+  }
+  90% {
+    opacity: 0;
+    box-shadow: 0 0 .2em .13em $jm-green, 0 0 0 549px white, 0 0 0 549px $jm-green;
+  }
+}

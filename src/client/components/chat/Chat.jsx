@@ -15,7 +15,11 @@ class Chat extends React.Component {
     }
 
     sendChatMessage = () => {
-        emit({ type: `CHAT_MESSAGE`, name: this.props.profile.name || `You`, text: `${this.refs.m.value}`, role: `viewer`, messageType: `message` });
+        const text = this.refs.m.value;
+        if (!text) {
+            return;
+        }
+        emit({ type: `CHAT_MESSAGE`, name: this.props.profile.name || `You`, text, role: `viewer`, messageType: `message` });
         this.refs.m.value = ``;
     }
 
@@ -23,25 +27,31 @@ class Chat extends React.Component {
 
         const plusIcon = <div className="plus-btn" onClick={() => this.setState({ isPlusMenuOpen: !this.state.isPlusMenuOpen })}>+</div>;
 
-        const plusMenu = <div>
-            <button onClick={() => emit({ type: `RAISE_HAND` })}>Raise Hand</button>
-            <button>Direct Message</button>
+        const plusMenu = <div className="popover" onClick={() => this.setState({ isPlusMenuOpen: false })}>
+            <div onClick={() => emit({ type: `RAISE_HAND` })}>Raise Hand</div>
+            <div>Direct Message</div>
+            <div className="bubble-triangle" />
+            <div className="bubble-triangle-border" />
         </div>;
 
         const textInput = <input ref="m" autoComplete="off" onKeyPress={e => e.key === `Enter` && this.sendChatMessage() } placeholder="Type to chat..." className="chat-input" />;
 
         return (
             <div className={`chat-container`}>
-            {this.props.chat.messages.map((msg, i) =>
-                <div key={i} className={`message ${msg.messageType} ${msg.role}`}>
-                { msg.messageType === `message` ? `${msg.name}: ${msg.text}` : msg.text}
+                <div className={`chat-message-container`}>
+                {this.props.chat.messages.map((msg, i) =>
+                    <div key={i} className={`message ${msg.messageType} ${msg.role}`}>
+                    { msg.messageType === `message` ? `${msg.name}: ${msg.text}` : msg.text}
+                    </div>
+                )}
                 </div>
-            )}
                 <div className="chat-input-container">
-                    { plusIcon }
-                    { this.state.isPlusMenuOpen && plusMenu }
-                    { textInput }
-                    <button className="send-btn" onClick={this.sendChatMessage}>➦</button>
+                    <div className="plus-input">
+                        { plusIcon }
+                        { this.state.isPlusMenuOpen && plusMenu }
+                        { textInput }
+                    </div>
+                    <button className="send-btn" onClick={this.sendChatMessage}>⇨</button>
                 </div>
             </div>
         );

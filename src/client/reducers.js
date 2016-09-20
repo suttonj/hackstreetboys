@@ -29,9 +29,22 @@ export function chat(state={ messages: [] }, action) {
     }
 }
 
-export function profile(state={name: '', email: ''}, action) {
+const profileInitialState = {
+    background: 'https://secure.join.me/Common/Images/Background/Socks.jpg',
+    avatar: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/238777/joinmoji-11.png',
+    name: window.localStorage.getItem(`name`) || ``,
+    email: null,
+};
+
+export function profile(state=profileInitialState, action) {
     switch (action.type) {
+        case `SET_AVATAR`:
+            return { ...state, avatar: action.avatar };
+        case `SET_NAME`:
+            window.localStorage.setItem('name', action.name);
+            return { ...state,  name: action.name };
         case `UPDATE_PROFILE`:
+            window.localStorage.setItem('name', action.name);
             return { ...state, name: action.name, email: action.email };
         default:
             return state;
@@ -43,7 +56,14 @@ const toolComponents = {
     bingo: { component: Bingo, properties: {} },
 };
 const toolDescriptors = [
-    { id: `bingo`, iconUrl: ``, title: `Bingo`, description: `A fun twist on classic BINGO!` },
+    { id: `bingo`, iconUrl: `https://logo.clearbit.com/logmein.com`, title: `LogMeIn All-Staff Bingo`, description: `A fun twist on classic BINGO!`, real:true },
+    { id: `trello`, iconUrl: `https://logo.clearbit.com/trello.com`, title: `Trello`, description: `Share tasks instantly`},
+    { id: `slack`, iconUrl: `https://logo.clearbit.com/slack.com`, title: `Slack`, description: `View status and invite teammates`},
+    { id: `JIRA`, iconUrl: `https://logo.clearbit.com/jira.atlassian.com`, title: `JIRA`, description: `Integrated planning poker`},
+    { id: `drop-paper`, iconUrl: `https://logo.clearbit.com/dropbox.com`, title: `Dropbox Paper`, description: `Collaborative Meeting Notes`},
+    { id: `invision`, iconUrl: `https://logo.clearbit.com/invisionapp.com`, title: `InVision`, description: `Share designs with commenting`},
+    { id: `googlemaps`, iconUrl: `https://logo.clearbit.com/maps.google.com`, title: `Google Maps`, description: `Share ETAs and location`},
+    { id: `mashery`, iconUrl: `https://logo.clearbit.com/mashery.com`, title: `Mashery`, description: `Add APIs via API`},
 ];
 
 export function tools(state={ activeTool: null, tools: toolDescriptors }, action) {
