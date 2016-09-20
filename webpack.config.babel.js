@@ -18,7 +18,7 @@ export const baseConfig = {
         vendors: ['react'],
     },
     output: {
-        path: path.join(__dirname, 'build'),
+        path: path.join(__dirname, './src/server/build'),
         filename: '[name].js',
     },
     module: {

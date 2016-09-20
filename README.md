@@ -7,5 +7,5 @@
 
 ## prod
 * npm i
-* npm run build
-* Static files transpiled into /build directory
+* npm run build in terminal 1 -- transpiles js, then starts server
+* npm run ngrok in terminal 2 -- exposes server running on port 3001
