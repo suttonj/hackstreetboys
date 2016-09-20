@@ -1,1 +1,1 @@
-export const ALPHABET = '1';
+export const ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz';

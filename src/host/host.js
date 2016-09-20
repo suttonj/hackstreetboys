@@ -19,14 +19,14 @@ const store = createStore(
 );
 
 var audioContext = new AudioContext();
-var MESSAGE = '1';
+var MESSAGE = '856287457';
 
 const ssocket = new SonicSocket({alphabet: ALPHABET, charDuration: 0.2 });
 const sendMessage = () =>{
-  ssocket.send(MESSAGE);
+  const delayedCallback = () => setTimeout(sendMessage, 1000);
+  ssocket.send(MESSAGE, delayedCallback);
 }
-
-setInterval(sendMessage, 3000);
+sendMessage();
 
 io().on(`EMITTED`, data => store.dispatch(data));
 
