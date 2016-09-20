@@ -1,9 +1,10 @@
 @import 'variables'
+@import 'mixins'
 
 $profile-photo-size: 200px
 
 .profile
-    height: calc(100vh - 48px)
+    @include panel-height()
     display: flex
     flex-direction: column
     justify-content: space-between
