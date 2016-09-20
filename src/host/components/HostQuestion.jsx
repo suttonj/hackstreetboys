@@ -3,13 +3,24 @@ import { connect } from 'react-redux';
 
 import { emit } from '../actionCreators';
 
+import '~/shared/styles/HostQuestion.sass';
+
 class HostQuestion extends Component {
     render() {
-        const askQuestion = () => emit({ type: `SET_POLL`, activePoll: this.refs.question.value });
+        const askQuestion = () => {
+          emit({ type: `SET_POLL`, activePoll: this.refs.question.value });
+        }
+
         return (
             <div>
-                <input ref="question"/>
-                <button onClick={askQuestion}>Ask question</button>
+                <form>
+                  <h4 className='title'>Create your custom question</h4>
+                  <label>Question</label>
+                  <textarea ref='question' />
+                  <button className='btn btn-secondary btn-full btn-small' onClick={askQuestion}>
+                    Ask this question
+                  </button>
+                </form>
             </div>
         );
     }

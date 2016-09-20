@@ -1,0 +1,26 @@
+@import 'theme.sass'
+
+#mount
+  > div
+    height: 100%
+
+.title
+  text-align: center
+  font-weight: $font-weight-bold
+
+form
+  display: flex
+  flex-direction: column
+  height: 100%
+  padding: 0 5px;
+  label
+    color: $gray
+    font-size: $font-size-small
+    margin-bottom: 5px
+  textarea
+    flex-grow: 1
+    border-color: $gray-light
+    border-radius: 5px
+  > *
+    display: block
+    width: 100%
