@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NotificationSystem from 'react-notification-system';
 
+import PollResults from './PollResults';
+
 import { emit } from '../actionCreators';
 
 class Host extends Component {
@@ -18,6 +20,7 @@ class Host extends Component {
 
     componentWillReceiveProps(nextProps, oldProps) {
         const raisedHand = nextProps.app.hasRaisedHand;
+
         if (raisedHand) {
             this.notificationSystem.addNotification({
                 level: 'info',
@@ -35,7 +38,9 @@ class Host extends Component {
         return(
             <div>
                 <NotificationSystem ref="toasts" style={toastStyle} />
-                { this.props.app.results }
+                { this.props.app.activePoll &&
+                    <PollResults pollResults={this.props.app.pollResults} />
+                }
             </div>
         );
     }
@@ -47,6 +52,8 @@ const toastStyle = {
             backgroundColor: '#444',
             color: '#fff',
             height: '80px',
+            borderTop: 'none',
+            borderRadius: '4px',
         },
     }
 }
