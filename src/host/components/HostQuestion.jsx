@@ -9,6 +9,10 @@ class HostQuestion extends Component {
     render() {
         const askQuestion = () => {
           emit({ type: `SET_POLL`, activePoll: this.refs.question.value });
+          const frameEl = window.frameElement;
+          if (frameEl) {
+            frameEl.remove();
+          }
         }
 
         return (
