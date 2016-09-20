@@ -4,14 +4,8 @@ export default class Connecting extends Component {
     render() {
         return (
           <div className="listen-spinner">
-            <div id="scenes">
-              <div className="scene scene1">
-                <div className="description">Giant Robots!</div>
-                <div className="dot"></div>
-              </div>
-            </div>
-            <div className="listen-status">
-              <h2 onClick={this.props.onClick}>Listening For a Meeting...</h2>
+            <div className="listen-status" style={{marginBottom:60}}>
+              <h2 onClick={this.props.onClick}>Listening for a meeting...</h2>
               <Bars loadingString={this.props.code} />
             </div>
           </div>
@@ -22,30 +16,33 @@ export default class Connecting extends Component {
 class Bars extends Component {
     render() {
       return(
-        <div className="loading-string">
-          <div className="bars" >
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
-              <div className="bar"></div>
+        <div style={{display:`flex`, alignItems: `center`}}>
+          <div style={{marginRight:10, fontSize:20}}>join.me/</div>
+          <div className="loading-string" style={{top:10}}>
+            <div className="bars" >
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+            </div>
+            <div className="bar-text"> {this.props.loadingString} </div>
           </div>
-          <div className="bar-text"> {this.props.loadingString} </div>
         </div>
       )
     }

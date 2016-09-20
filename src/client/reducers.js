@@ -9,7 +9,7 @@ export function app(state={ isConnecting: true, isModalOpen: false }, action) {
     }
 }
 
-export function tabs(state={ active: `chat` }, action) {
+export function tabs(state={ active: `profile` }, action) {
     switch (action.type) {
         case `SET_TAB`:
             return { ...state, active: action.tab };
