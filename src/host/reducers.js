@@ -1,6 +1,9 @@
 const defaultState = {
     hasRaisedHand: null,
-    results: [],
+    pollResults: {
+        yes: 0,
+        no: 0,
+    },
 };
 
 export function app(state=defaultState, action) {
@@ -8,7 +11,11 @@ export function app(state=defaultState, action) {
         case `RAISE_HAND`:
             return { ...state, hasRaisedHand: action.name };
         case `CLIENT_RESPONSE`:
-            return { ...state, results: [...state.results, action.response] };
+            return { ...state, 
+                pollResults: {...state.pollResults, 
+                    [action.response]: state.pollResults[action.response] + 1  
+                }
+            };
         default:
             return state;
     }
