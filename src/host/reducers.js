@@ -19,6 +19,8 @@ export function app(state=defaultState, action) {
             };
         case `SET_POLL`:
             return { ...state, activePoll: action.activePoll };
+        case `CLEAR_POLL`:
+            return { ...state, activePoll: null };
         default:
             return state;
     }
