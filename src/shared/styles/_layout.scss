@@ -1,3 +1,5 @@
+@import 'mixins';
+
 * {
   box-sizing: border-box;
 }
@@ -5,9 +7,12 @@
 body{
   margin: 0;
   height: 100vh;
-
-  #mount, .app-container, .swipeable-view {
+  #mount, .app-container {
     height: 100%;
+  }
+
+  .swipeable-view {
+    @include panel-height();
     display: flex;
     flex-direction: column;
   }
@@ -23,23 +28,22 @@ body{
   display:flex;
   flex-flow: column nowrap;
   background: white;
-  padding: 10px;
   height: 100%;
+  padding: 10px;
 
   .chat-messages{
     flex-grow: 1;
   }
   
   .chat-input-container{
+    height: 2.7rem;
+    min-height: 2.7rem;
     font-size: 2rem;
-    height: 3rem;
-    width: 95%;
+    width: 100%;
     .chat-input{
-      width: 85%;
       font-size: 1rem;
     }
     .plus-btn{
-      width: 2rem;
       text-align: center;
     }
   }

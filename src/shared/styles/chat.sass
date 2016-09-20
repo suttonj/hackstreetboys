@@ -6,6 +6,9 @@
 .chat-message-container
     display: flex
     flex-direction: column
+    flex-grow: 1
+    overflow-y: auto
+    padding: 0 10px
 .message
     display: table
 .meetingState
@@ -27,9 +30,9 @@
     align-self: flex-end
 
 .chat-input-container
+    height: 4rem
     display: flex
     justify-content: space-between
-    height: 25px
     position: relative
     display: flex
 .plus-input
@@ -41,7 +44,7 @@
     padding: 0 5px
     border-radius: 5px 0 0 5px
 .chat-input
-    width: 80%
+    width: 100%
     border: solid 2px gray
     border-left: 0
     padding-left: 10px
