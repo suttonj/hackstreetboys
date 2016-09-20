@@ -17,11 +17,13 @@ class Profile extends React.Component {
                     <NameField name={this.props.data.name} textChanged={this.props.setName} />
                 </div>
                 <div>
-                    <Register />
+                    { this.props.data.doShowReg && <Register /> }
                 </div>
                 <div>
                     <button className="btn btn-full btn-primary"
-                    onClick={() => this.props.dispatch({type: `SET_TAB`, tab: `chat`})}>Join</button>
+                    onClick={() => this.props.dispatch({type: `SET_TAB`, tab: `chat`})}>
+                    { this.props.doShowReg ? `Register` : `Join`}
+                    </button>
                 </div>
             </div>
         );

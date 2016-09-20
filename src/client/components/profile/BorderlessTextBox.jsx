@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 
 class BorderlessTextBox extends Component {
     constructor(props) {
@@ -48,6 +48,7 @@ class BorderlessTextBox extends Component {
         if (e.keyCode === 13) {
             this.refs.theInput.blur();
             e.preventDefault();
+            this.props.dispatch({ type: `SET_TAB`, tab: `chat` });
         } else if (this.props.type === 'name') {
             this.textChanged(e.target.value);
         }
@@ -77,4 +78,4 @@ BorderlessTextBox.propTypes = {
     type: PropTypes.string,
 };
 
-export default BorderlessTextBox;
+export default connect()(BorderlessTextBox);

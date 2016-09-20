@@ -1,3 +1,5 @@
+const name = window.localStorage.getItem(`name`) || ``;
+
 export function app(state={ isConnecting: true, isModalOpen: false }, action) {
     switch (action.type) {
         case `CONNECT_TO_MEETING`:
@@ -9,7 +11,8 @@ export function app(state={ isConnecting: true, isModalOpen: false }, action) {
     }
 }
 
-export function tabs(state={ active: `profile` }, action) {
+const activeTab = name ? `chat` : `profile`;
+export function tabs(state={ active: activeTab }, action) {
     switch (action.type) {
         case `SET_TAB`:
             return { ...state, active: action.tab };
@@ -32,8 +35,9 @@ export function chat(state={ messages: [] }, action) {
 const profileInitialState = {
     background: 'https://secure.join.me/Common/Images/Background/Socks.jpg',
     avatar: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/238777/joinmoji-11.png',
-    name: window.localStorage.getItem(`name`) || ``,
+    name,
     email: null,
+    doShowReg: !!name,
 };
 
 export function profile(state=profileInitialState, action) {
@@ -42,10 +46,15 @@ export function profile(state=profileInitialState, action) {
             return { ...state, avatar: action.avatar };
         case `SET_NAME`:
             window.localStorage.setItem('name', action.name);
-            return { ...state,  name: action.name };
+            return { ...state, name: action.name };
         case `UPDATE_PROFILE`:
             window.localStorage.setItem('name', action.name);
             return { ...state, name: action.name, email: action.email };
+        case `SET_TAB`:
+            if (action.tab === `profile` && state.name) {
+                state.doShowReg = true;
+            }
+            return state;
         default:
             return state;
     }
