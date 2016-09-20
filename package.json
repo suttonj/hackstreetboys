@@ -8,7 +8,9 @@
     "prebuild": "npm run clean",
     "build": "webpack -p --config webpack.production.config.babel.js",
     "start": "webpack-dev-server --inline --port 3000 --hot | nodemon --exec babel-node -- src/server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "~/Downloads/ngrok http 3000",
+    "server": "~/Downloads/ngrok http 3001"
   },
   "repository": {
     "type": "git",

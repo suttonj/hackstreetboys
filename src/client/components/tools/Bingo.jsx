@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect} from 'react-redux';
 
 import { emit } from '../../actionCreators';
 
@@ -20,7 +21,7 @@ const tiles = [
   `synergy`,
   `strategic fit`,
 ];
-export default class Bingo extends Component {
+class Bingo extends Component {
 
     state = { isActive: false }
 
@@ -40,7 +41,10 @@ export default class Bingo extends Component {
     render() {
         return (
           <div style={{padding:`0 10px`}}>
-            <h1 style={{textAlign:`center`, marginTop:25}}>Meeting Bingo</h1>
+            <h1 style={{textAlign:`center`, marginTop:25}}>
+              <a style={{float:`left`}} onClick={() => this.props.dispatch({ type:`SET_TOOL`, tool: null })}>⇦</a>
+              Meeting Bingo
+            </h1>
             <p style={{textAlign:`center`}}>Fill out the card below as the presenter uses the following phrases. Once you get 4 in a row, you can yell bingo to win!</p>
             <Tiles list={tiles} />
             
@@ -49,6 +53,8 @@ export default class Bingo extends Component {
         );
     }
 }
+
+export default connect()(Bingo);
 
 class Tiles extends Component{
   state = {
