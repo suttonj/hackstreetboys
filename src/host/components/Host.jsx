@@ -1,3 +1,4 @@
+import '../../shared/styles/theme.sass';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NotificationSystem from 'react-notification-system';
@@ -26,7 +27,9 @@ class Host extends Component {
                 level: 'info',
                 autoDismiss: 0,
                 children: (
-                    <div style={{alignSelf: 'center'}}><b>{`${raisedHand}`}</b> raised their hand. ✋</div>
+                    <div style={{alignSelf: 'center', padding: '20px 0 5px 0', textAlign: 'center'}}>
+                        <b>{`${raisedHand}`}</b> raised their hand. ✋
+                    </div>
                 )
             });
         }
@@ -47,6 +50,7 @@ const toastStyle = {
         info: {
             backgroundColor: '#444',
             color: '#fff',
+            height: '80px',
         },
     }
 }
