@@ -15,13 +15,19 @@ class Host extends Component {
         this.notificationSystem = this.refs.toasts;
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps, oldProps) {
         const raisedHand = nextProps.app.hasRaisedHand;
         if (raisedHand) {
+            if (this.props.app.hasRaisedHand && raisedHand === this.props.app.hasRaisedHand) {
+                return;
+            }
+
             this.notificationSystem.addNotification({
-                message: `${raisedHand} raised their hand.`,
-                level: 'success',
+                level: 'info',
                 autoDismiss: 0,
+                children: (
+                    <div style={{alignSelf: 'center'}}><b>{`${raisedHand}`}</b> raised their hand. ✋</div>
+                )
             });
         }
     }
@@ -29,12 +35,20 @@ class Host extends Component {
     render() {
         return(
             <div>
-                <NotificationSystem ref="toasts" />
+                <NotificationSystem ref="toasts" style={toastStyle} />
                 { this.props.app.results }
             </div>
         );
     }
-        
+}
+
+const toastStyle = {
+    NotificationItem: {
+        info: {
+            backgroundColor: '#444',
+            color: '#fff',
+        },
+    }
 }
 
 export default connect(state => state)(Host);
