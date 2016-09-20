@@ -2,3 +2,4 @@
 node_modules/
 .npmignore
 npm-debug.log
+/src/server/build/
