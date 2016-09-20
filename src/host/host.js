@@ -9,7 +9,7 @@ import * as reducers from './reducers';
 
 import Host from './components/Host';
 
-import {ALPHABET} from '~/shared/constants/audio';
+import AudioConfig from '~/shared/constants/audio';
 
 // Add the reducer to your store on the `routing` key
 const store = createStore(
@@ -21,7 +21,7 @@ const store = createStore(
 var audioContext = new AudioContext();
 var MESSAGE = '856287457';
 
-const ssocket = new SonicSocket({alphabet: ALPHABET, charDuration: 0.2 });
+const ssocket = new SonicSocket(AudioConfig);
 const sendMessage = () =>{
   const delayedCallback = () => setTimeout(sendMessage, 1000);
   ssocket.send(MESSAGE, delayedCallback);

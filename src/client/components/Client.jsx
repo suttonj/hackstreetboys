@@ -1,5 +1,5 @@
 const SonicServer = require('~/shared/libs/sonic-server');
-import {ALPHABET} from '~/shared/constants/audio';
+import AudioConfig from '~/shared/constants/audio';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -41,7 +41,7 @@ class Client extends Component {
         this.connectToMeeting = this.connectToMeeting.bind(this);
         this.updateCode = this.updateCode.bind(this);
 
-        this.sserver = new SonicServer({alphabet: ALPHABET});
+        this.sserver = new SonicServer(AudioConfig);
         this.sserver.on('message', this.connectToMeeting);
         this.sserver.on('character', this.updateCode)
         this.sserver.start();
@@ -54,7 +54,11 @@ class Client extends Component {
     }
 
     updateCode(char) {
-        this.setState({code: this.state.code + char})
+        let newCode = this.state.code + char;
+        if (newCode.length == 3 || newCode.length == 7) {
+            newCode += '-';
+        }
+        this.setState({code: newCode})
     }
 
     render() {
