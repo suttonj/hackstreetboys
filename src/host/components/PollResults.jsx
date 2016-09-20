@@ -1,4 +1,6 @@
 import '../../shared/styles/theme.sass';
+import '../../shared/styles/poll.sass';
+
 import React, { Component } from 'react';
 
 import { emit } from '../actionCreators';
@@ -14,8 +16,14 @@ export default class PollResults extends Component {
 
         return(
             <div className="poll-results-container">
-                 {yes} participants said yes. <br/>
-                 {no} participants said no.
+                <div className="poll-results">
+                    <div style={{textAlign: 'left'}}>
+                        <span className="yes">{yes}</span> participants said <span className="yes">YES</span>.
+                    </div>
+                    <div style={{textAlign: 'left'}}>
+                        <span className="no">{no}</span> participants said <span className="no">NO</span>.
+                    </div>
+                </div>
             </div>
         );
     }

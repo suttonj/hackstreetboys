@@ -4,6 +4,7 @@ const defaultState = {
         yes: 0,
         no: 0,
     },
+    activePoll: null,
 };
 
 export function app(state=defaultState, action) {
@@ -16,6 +17,8 @@ export function app(state=defaultState, action) {
                     [action.response]: state.pollResults[action.response] + 1  
                 }
             };
+        case `SET_POLL`:
+            return { ...state, activePoll: action.activePoll };
         default:
             return state;
     }

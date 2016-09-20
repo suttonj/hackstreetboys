@@ -29,3 +29,45 @@
                 background: $jm-green
             &.no
                 background: $jm-orange
+
+.poll-results-container
+    font-family: inherit
+    position: fixed
+    width: 320px
+    padding: 0px 10px 10px
+    z-index: 9998
+    box-sizing: border-box
+    height: auto
+    top: 0px
+    bottom: auto
+    left: auto
+    right: 0px
+
+.poll-results
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    position: relative
+    width: 100%
+    cursor: pointer
+    border-radius: 4px
+    font-size: 13px
+    margin: 10px 0px 0px
+    padding: 10px 10px 10px 40px
+    box-sizing: border-box
+    opacity: 1
+    transition: 0.3s ease-in-out
+    transform: translate3d(0px, 0px, 0px)
+    will-change: transform, opacity
+    color: rgb(255, 255, 255)
+    box-shadow: rgba(54, 156, 199, 0.901961) 0px 0px 1px
+    height: 80px
+    right: 0px
+    background-color: rgb(68, 68, 68)
+    text-align: center
+    .yes
+        color: $jm-green
+        font-weight: bold
+    .no
+        color: red
+        font-weight: bold
