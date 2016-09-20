@@ -8,7 +8,9 @@ import '~/shared/styles/HostQuestion.sass';
 class HostQuestion extends Component {
     render() {
         const askQuestion = () => {
-          emit({ type: `SET_POLL`, activePoll: this.refs.question.value });
+          const setPollAction = { type: `SET_POLL`, activePoll: this.refs.question.value };
+          emit(setPollAction);
+          this.props.dispatch(setPollAction);
           const frameEl = window.frameElement;
           if (frameEl) {
             frameEl.remove();
