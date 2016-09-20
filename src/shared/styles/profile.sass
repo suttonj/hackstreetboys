@@ -1,35 +1,50 @@
 @import 'variables'
 
+$profile-photo-size: 200px
+
+.profile
+    height: calc(100vh - 48px)
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    >:not(.full-width)
+        padding: 0 10px;
+    >:last-child
+        margin-bottom: 10px
+    .btn
+        margin-top: 0
+
 .profile-photo-container
     display: flex
     flex-direction: row
     justify-content: center
     transform: translateY(-50%)
+    height: $profile-photo-size / 2
 
 .profile-photo-circle
-	display: flex
-	align-self: center
-	width: 200px
-	height: 200px
-	border-radius: 50%
-	overflow: hidden
-	background-size: cover
-	background-position: center
-	background-color: $white
-	border: solid 2px $white
+    display: flex
+    align-self: center
+    width: $profile-photo-size
+    height: $profile-photo-size
+    border-radius: 50%
+    overflow: hidden
+    background-size: cover
+    background-position: center
+    background-color: $white
+    border: solid 2px $white
 
 .profile-photo-buttons
-	position: relative
-	padding: 5px 0
-	top: 100px
-	width: 100%
-	text-align: center
+    position: relative
+    padding: 5px 0
+    top: 100px
+    width: 100%
+    text-align: center
 
 .profile-background-container
     align-self: center
     justify-content: center
     width: 100%
-    height: 271px
+    height: 210px
     overflow: hidden
     transition: height 1s cubic-bezier(0.19, 1, 0.22, 1)
     background-color: $mid-grey
@@ -64,7 +79,6 @@
 
 .name
     align-items: center
-    transform: translateY(-25%)
     font-size: $font-size-huge
     font-weight: bold
     text-align: center
@@ -109,3 +123,22 @@
         background-position: 0 0
     &.white
         background-position: 20px -20px
+
+.register-container
+    padding-top: 20px
+    border-top: dotted gray
+    color: gray
+.register-title
+    font-weight: bold
+    text-align: center
+.input-with-label
+    line-height: 40px
+    display: flex
+    justify-content: space-between
+    padding: 10px 0
+.input-with-label > input
+    width: 70%
+    border: 2px solid lightgray
+    border-radius: 5px
+    font-size: 18px
+    padding: 0 10px
