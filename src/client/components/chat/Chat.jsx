@@ -38,7 +38,7 @@ class Chat extends React.Component {
                 </div>
                 <div className="chat-input-container">
                     <div className="plus-input">
-                        <div className="plus-btn" onClick={() => emit({ type: `RAISE_HAND` })}>✋</div>
+                        <div className="plus-btn" onClick={() => emit({ type: `RAISE_HAND`, name: this.props.profile.name || 'Someone' })}>✋</div>
                         { textInput }
                     </div>
                     <button className="send-btn" onClick={this.sendChatMessage}>⇨</button>
