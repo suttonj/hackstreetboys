@@ -37,14 +37,19 @@ const swap = dict => {
 class Client extends Component {
     constructor(props) {
         super(props);
-        this.state = {code: ''};
+        this.state = {code: '', sourceId: null};
         this.connectToMeeting = this.connectToMeeting.bind(this);
         this.updateCode = this.updateCode.bind(this);
+        this.pickSource = this.pickSource.bind(this);
 
         this.sserver = new SonicServer(AudioConfig);
         this.sserver.on('message', this.connectToMeeting);
         this.sserver.on('character', this.updateCode)
-        this.sserver.start();
+    }
+
+    pickSource(sourceId) {
+        this.sserver.stop();
+        this.sserver.start(sourceId);
     }
 
     connectToMeeting(message) {
@@ -72,7 +77,7 @@ class Client extends Component {
         } = this.props;
 
         if (app.isConnecting) {
-            return <Connecting code={this.state.code} onClick={this.connectToMeeting}/>;
+            return <Connecting code={this.state.code} onClick={this.connectToMeeting} onSourceChanged={this.pickSource}/>;
         }
 
         const index = tabToIndex[tabs.active];
