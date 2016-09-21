@@ -59,6 +59,9 @@ class Client extends Component {
             newCode += '-';
         }
         this.setState({code: newCode})
+        if (newCode.length == 11) {
+            setTimeout(()=>this.connectToMeeting(newCode), 10);
+        }
     }
 
     render() {
