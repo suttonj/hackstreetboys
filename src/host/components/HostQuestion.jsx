@@ -11,10 +11,6 @@ class HostQuestion extends Component {
           const setPollAction = { type: `SET_POLL`, activePoll: this.refs.question.value };
           emit(setPollAction);
           this.props.dispatch(setPollAction);
-          const frameEl = window.frameElement;
-          if (frameEl) {
-            frameEl.remove();
-          }
         }
 
         return (
