@@ -33,8 +33,8 @@ export function chat(state={ messages: [] }, action) {
 }
 
 const profileInitialState = {
-    background: 'https://secure.join.me/Common/Images/Background/Socks.jpg',
-    avatar: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/238777/joinmoji-11.png',
+    background: 'https://secure.join.me/Common/Images/Background/Bicycle.jpg',
+    avatar: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/238777/joinmoji-8.png',
     name,
     email: null,
     doShowReg: !!name,
