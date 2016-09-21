@@ -18,6 +18,12 @@ const store = createStore(
 
 io().on(`EMITTED`, data => store.dispatch(data));
 
+MediaStreamTrack.getSources(sources => {
+    const audioSources = sources.filter(si => si.kind === `audio`);
+    store.dispatch({ type: `SET_AUDIO_SOURCES`, audioSources });
+});
+
+      
 ReactDOM.render(
     <Provider store={store}>
         <Client />

@@ -1,11 +1,13 @@
 const name = window.localStorage.getItem(`name`) || ``;
 
-export function app(state={ isConnecting: true, isModalOpen: false }, action) {
+export function app(state={ isConnecting: true, isModalOpen: false, audioSources: [] }, action) {
     switch (action.type) {
         case `CONNECT_TO_MEETING`:
             return { ...state, isConnecting: false };
         case `SET_POLL`:
             return { ...state, activePoll: action.activePoll };
+        case `SET_AUDIO_SOURCES`:
+            return { ...state, audioSources: action.audioSources };
         default:
             return state;
     }

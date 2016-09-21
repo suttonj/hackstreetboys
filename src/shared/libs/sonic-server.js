@@ -44,7 +44,7 @@ var State = {
 SonicServer.prototype.start = function(sourceId) {
   // Start listening for microphone. Continue init in onStream.
   var constraints = {
-    audio: { optional: [{ echoCancellation: false, {sourceId} }] }
+    audio: { optional: [{ echoCancellation: false }, {sourceId}] }
   };
   navigator.webkitGetUserMedia(constraints,
       this.onStream_.bind(this), this.onStreamError_.bind(this));

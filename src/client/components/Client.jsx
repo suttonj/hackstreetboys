@@ -48,7 +48,6 @@ class Client extends Component {
     }
 
     pickSource(sourceId) {
-        this.sserver.stop();
         this.sserver.start(sourceId);
     }
 
