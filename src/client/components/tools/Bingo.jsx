@@ -23,19 +23,42 @@ const tiles = [
 ];
 class Bingo extends Component {
 
-    state = { isActive: false }
+    state = {
+      selected: {},
+    }
 
     constructor(props) {
       super(props);
       this.sayBingo = this.sayBingo.bind(this);
+      this.allActive = this.allActive.bind(this);
+      this.toggleTile = this.toggleTile.bind(this);
+      this.state.selected = this.resetTiles();
+    }
+
+    resetTiles = () => {
+      const selected = {};
+      tiles.map((listValue, i) => {
+        selected[i] = false;
+      });
+      return selected;
+    }
+
+    toggleTile = i => {
+      const toggled = {...this.state.selected, [i]: !this.state.selected[i]};
+      this.setState({ selected: toggled });
     }
 
     sayBingo = () => {
-      if (this.state.isActive) {
-        emit({ type: `SAY_BINGO`});
-      } else {
-        this.setState({ isActive: true });
+      emit({ type: `SAY_BINGO`});
+      this.setState({selected: this.resetTiles()});
+    }
+
+    allActive = () => {
+      for (var i = 0; i < tiles.length; i++) {
+        if (this.state.selected[i] === false)
+          return false;
       }
+      return true;
     }
 
     render() {
@@ -46,9 +69,8 @@ class Bingo extends Component {
               Meeting Bingo
             </h1>
             <p style={{textAlign:`center`}}>Fill out the card below as the presenter uses the following phrases. Once you get 4 in a row, you can yell bingo to win!</p>
-            <Tiles list={tiles} />
-            
-          <button className={`btn-full btn-${this.state.isActive ? `primary` : `inactive`} btn`} onClick={this.sayBingo}>Say Bingo</button>
+            <Tiles list={tiles} selected={this.state.selected} toggleTile={this.toggleTile} />
+          <button className={`btn-full btn-${this.allActive() ? `primary` : `inactive`} btn`} onClick={this.sayBingo}>Say Bingo</button>
           </div>
         );
     }
@@ -56,28 +78,21 @@ class Bingo extends Component {
 
 export default connect()(Bingo);
 
-class Tiles extends Component{
-  state = {
-    selected: [],
-  }
-
+class Tiles extends Component {
   constructor(props) {
     super(props);
-    this.selectTile = this.selectTile.bind(this);
-  }
-
-  selectTile = i => {
-    const selected = [...this.state.selected];
-    selected.push(i);
-    this.setState({ selected });
   }
 
   render() {
-
       return (
         <div className='board'> 
           {this.props.list.map((listValue, i) => {
-            return <div key={i} className={this.state.selected.includes(i) ? `tile tile-selected` : `tile`} onClick={() => this.selectTile(i)} ><span>{listValue}</span></div>;
+            return <div
+                key={i}
+                className={this.props.selected[i] ? `tile tile-selected` : `tile`}
+                onClick={() => this.props.toggleTile(i)} >
+              <span>{listValue}</span>
+            </div>;
           })}
         </div>
       )
