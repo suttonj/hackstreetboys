@@ -25,6 +25,7 @@ const io = socketIo(httpServer);
 const db = { emitted: chatLog };
 
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 app.get(`/client`, (req, res) => res.sendFile(`${__dirname}/client.html`));
 app.get(`/host`, (req, res) => res.sendFile(`${__dirname}/host.html`));

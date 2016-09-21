@@ -49,6 +49,11 @@ class Host extends Component {
 }
 
 const toastStyle = {
+    Containers: {
+        DefaultStyle: {
+            width: '280px',
+        }
+    },
     NotificationItem: {
         info: {
             backgroundColor: '#444',
@@ -57,6 +62,11 @@ const toastStyle = {
             borderTop: 'none',
             borderRadius: '4px',
         },
+    },
+    Dismiss: {
+        DefaultStyle: {
+            backgroundColor: 'rgba(0,0,0,0)'
+        }
     }
 }
 
