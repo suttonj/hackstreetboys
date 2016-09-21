@@ -21,8 +21,8 @@ import Profile from './profile/Profile';
 import Poll from './tools/Poll';
 
 const tabToIndex = {
-    chat: 0,
-    tools: 1,
+    tools: 0,
+    chat: 1,
     profile: 2,
 };
 
@@ -59,6 +59,9 @@ class Client extends Component {
             newCode += '-';
         }
         this.setState({code: newCode})
+        if (newCode.length == 11) {
+            setTimeout(()=>this.connectToMeeting(newCode), 10);
+        }
     }
 
     render() {
@@ -89,13 +92,13 @@ class Client extends Component {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div className='app-container' onClick={this.connectToMeeting}>
-                    {createTabs([`chat`, `tools`, `profile`])}
+                    {createTabs([`tools`, `chat`, `profile`])}
                     <SwipeableViews index={index} onChangeIndex={changeIndex}>
                         <div className='swipeable-view'>
-                            <Chat />
+                            <Tools />
                         </div>
                         <div className='swipeable-view'>
-                            <Tools />
+                            <Chat />
                         </div>
                         <div className='swipeable-view'>
                             <Profile 
