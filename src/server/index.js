@@ -1,6 +1,7 @@
 import express from 'express';
 import http from 'http';
 import socketIo from 'socket.io';
+import path from 'path';
 
 const chatLog = [
     { messageType: `meetingState`, text: `Welcome to join.me/join.kyle` },
@@ -22,6 +23,9 @@ const app = express();
 const httpServer = http.Server(app);
 const io = socketIo(httpServer);
 const db = { emitted: chatLog };
+
+app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 app.get(`/client`, (req, res) => res.sendFile(`${__dirname}/client.html`));
 app.get(`/host`, (req, res) => res.sendFile(`${__dirname}/host.html`));
