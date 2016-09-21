@@ -23,6 +23,7 @@ export default class PollResults extends Component {
                     <div style={{textAlign: 'left'}}>
                         <span className="no">{no}</span> participants said <span className="no">NO</span>.
                     </div>
+                    <span className="poll-results-dismiss" onClick={this.props.dismiss}>x</span>
                 </div>
             </div>
         );
